@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminUsers.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/V1/[controller]")]
     public class AdminUserController : Controller
     {
         // GET: api/<controller>
@@ -42,5 +42,6 @@ namespace AdminUsers.API.Controllers
         public void Delete(int id)
         {
         }
+        //test
     }
 }
