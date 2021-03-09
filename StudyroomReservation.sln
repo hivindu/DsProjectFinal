@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{D8D7CEF5-4573-4EC0-B07E-C61FDCFE032C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Student", "Student", "{C49F53F9-D934-43EE-9536-AB7911D5C091}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdminUsers", "AdminUsers", "{B51F888C-35B9-49AB-9B4E-2D1B7130BF5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Booking", "Booking", "{6A851261-B511-4533-B332-942C526D5865}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StudyRoom", "StudyRoom", "{7EC849D1-C22D-4997-93EF-4F2E3B20DD4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminUsers.API", "Src\AdminUsers\AdminUsers.API\AdminUsers.API.csproj", "{12C02691-1065-48F7-AC84-8E36089998C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12C02691-1065-48F7-AC84-8E36089998C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C02691-1065-48F7-AC84-8E36089998C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12C02691-1065-48F7-AC84-8E36089998C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12C02691-1065-48F7-AC84-8E36089998C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C49F53F9-D934-43EE-9536-AB7911D5C091} = {D8D7CEF5-4573-4EC0-B07E-C61FDCFE032C}
+		{B51F888C-35B9-49AB-9B4E-2D1B7130BF5A} = {D8D7CEF5-4573-4EC0-B07E-C61FDCFE032C}
+		{6A851261-B511-4533-B332-942C526D5865} = {D8D7CEF5-4573-4EC0-B07E-C61FDCFE032C}
+		{7EC849D1-C22D-4997-93EF-4F2E3B20DD4D} = {D8D7CEF5-4573-4EC0-B07E-C61FDCFE032C}
+		{12C02691-1065-48F7-AC84-8E36089998C2} = {B51F888C-35B9-49AB-9B4E-2D1B7130BF5A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B8D7A6D-5255-4018-9F96-21D48A57BE23}
+	EndGlobalSection
+EndGlobal
