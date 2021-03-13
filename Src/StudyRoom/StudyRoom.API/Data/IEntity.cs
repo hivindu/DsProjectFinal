@@ -7,6 +7,6 @@ namespace StudyRoom.API.Data
 {
     public interface IEntity
     {
-        public int id { get; set; }
+        public int SId { get; set; }
     }
 }
