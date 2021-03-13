@@ -10,6 +10,7 @@ namespace StudyRoom.API.Models
     public class Room : IEntity
     {
         // In here we have declared PRIMARY KEY in API model
+        //@Nidula just check this out
         [Key]
         public int SId { get; set; }
 
