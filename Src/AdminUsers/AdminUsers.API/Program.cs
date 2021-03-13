@@ -15,7 +15,7 @@ namespace AdminUsers.API
         {
             CreateHostBuilder(args).Build().Run();
         }
-        // nidda comment
+
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
