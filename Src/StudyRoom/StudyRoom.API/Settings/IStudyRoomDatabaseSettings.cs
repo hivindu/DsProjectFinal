@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace StudyRoom.API.Settings
 {
-    interface IStudyRoomDatabaseSettings
+    public interface IStudyRoomDatabaseSettings
     {
     }
 }

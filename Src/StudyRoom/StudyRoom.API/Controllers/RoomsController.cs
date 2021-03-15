@@ -1,36 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using StudyRoom.API.Data;
-using StudyRoom.API.Models;
+using StudyRoom.API.Entities;
+using StudyRoom.API.Repository.Interface;
 
 namespace StudyRoom.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class RoomsController : ControllerBase
     {
-        private readonly StudyRoomAPIContext _context;
+        private readonly IStuddyRoomRepository _repository;
+        private readonly ILogger<RoomsController> _logger;
 
-        public RoomsController(StudyRoomAPIContext context)
+        public RoomsController(IStuddyRoomRepository repository)
         {
-            _context = context;
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         // GET: api/Rooms
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Room>>> GetRoom()
+        [ProducesResponseType(typeof(IEnumerable<Rooms>),(int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Rooms>>> GetRoom()
         {
-            return await _context.Room.ToListAsync();
+            var result = await _repository.GetRooms();
+            return Ok(result);
         }
 
         // GET: api/Rooms/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Room>> GetRoom(int id)
+        public async Task<ActionResult<Rooms>> GetRoom(int id)
         {
             var room = await _context.Room.FindAsync(id);
 
@@ -46,7 +52,7 @@ namespace StudyRoom.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRoom(int id, Room room)
+        public async Task<IActionResult> PutRoom(int id, Rooms room)
         {
             if (id != room.SId)
             {
@@ -78,7 +84,7 @@ namespace StudyRoom.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Room>> PostRoom(Room room)
+        public async Task<ActionResult<Rooms>> PostRoom(Rooms room)
         {
             _context.Room.Add(room);
             await _context.SaveChangesAsync();
@@ -88,7 +94,7 @@ namespace StudyRoom.API.Controllers
 
         // DELETE: api/Rooms/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Room>> DeleteRoom(int id)
+        public async Task<ActionResult<Rooms>> DeleteRoom(int id)
         {
             var room = await _context.Room.FindAsync(id);
             if (room == null)

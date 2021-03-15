@@ -7,5 +7,11 @@ namespace StudyRoom.API.Data
 {
     public class StudyRoomConytextSeed
     {
+      
+
+        internal static void SeedingData()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
