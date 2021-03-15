@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StudyRoom.API.Data
+namespace StudyRoom.API.Repository
 {
-    public interface IEntity
+    public class StudyRoomRepository
     {
-        public int SId { get; set; }
     }
 }
