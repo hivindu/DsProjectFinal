@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudyRoom.API.Data
 {
-    public interface IRoomRepository
+    public interface IRoomRepository<Room> where Room: class, IEntity
     {
         Task<List<Room>> GetAllRooms();
         Task<Room> GetRoom(int id);
