@@ -9,16 +9,6 @@ namespace StudyRoom.API.Repository
 {
     public class StudyRoomRepository : IStuddyRoomRepository
     {
-        public Task Create(Rooms rooms)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<Rooms> GetRoom(int Sid)
         {
             throw new NotImplementedException();
@@ -35,6 +25,16 @@ namespace StudyRoom.API.Repository
         }
 
         public Task<IEnumerable<Rooms>> GetRooms()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Create(Rooms rooms)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Delete(int id)
         {
             throw new NotImplementedException();
         }
