@@ -19,9 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nusers", "Nusers", "{11DF13
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{A48F76DE-6CFA-458D-BF45-FD3126AECD32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.API", "Src\Users\Admin\Admin.API\Admin.API.csproj", "{ECAABBF0-54D3-46F7-A608-34E08E2712A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.API", "Src\Users\Admin\Admin.API\Admin.API.csproj", "{ECAABBF0-54D3-46F7-A608-34E08E2712A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nusers.API", "Src\Users\Nusers\Nusers.API\Nusers.API.csproj", "{974293C7-054C-4E49-BF55-BB504D560B32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nusers.API", "Src\Users\Nusers\Nusers.API\Nusers.API.csproj", "{974293C7-054C-4E49-BF55-BB504D560B32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

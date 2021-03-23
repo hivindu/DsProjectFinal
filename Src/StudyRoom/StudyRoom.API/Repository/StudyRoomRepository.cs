@@ -38,7 +38,7 @@ namespace StudyRoom.API.Repository
         {
             throw new NotImplementedException();
         }
-
+0
         public Task Update(Rooms rooms)
         {
             throw new NotImplementedException();
