@@ -28,17 +28,17 @@ namespace StudyRoom.API.Controllers
         // GET: api/Rooms
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Rooms>),(int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Rooms>>> GetRoom()
+        public async Task<ActionResult<IEnumerable<Rooms>>> GetRooms()
         {
             var result = await _repository.GetRooms();
             return Ok(result);
         }
 
-        // GET: api/Rooms/5
-        [HttpGet("{id}")]
+        // GET: api/Room/5
+        [HttpGet("{id}", Name = "GetRoom")]
         public async Task<ActionResult<Rooms>> GetRoom(int id)
         {
-            var room = await _context.Room.FindAsync(id);
+            var room = await _repository.GetRoom(id);
 
             if (room == null)
             {
@@ -48,69 +48,63 @@ namespace StudyRoom.API.Controllers
             return room;
         }
 
-        // PUT: api/Rooms/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRoom(int id, Rooms room)
+        // GET: api/Room/1
+        [HttpGet("{option}")]
+        public async Task<ActionResult<Rooms>> GetRoomByOption(int option)
         {
-            if (id != room.SId)
+            var room = await _repository.GetRoomByOption(option);
+
+            if (room == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(room).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RoomExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return room;
         }
 
-        // POST: api/Rooms
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpGet("{capacity}")]
+        public async Task<ActionResult<Rooms>> GetRoomByCapacity(int capacity)
+        {
+            var room = await _repository.GetRoomByCapacity(capacity);
+
+            if (room == null)
+            {
+                return NotFound();
+            }
+
+            return room;
+        }
+
         [HttpPost]
         public async Task<ActionResult<Rooms>> PostRoom(Rooms room)
         {
-            _context.Room.Add(room);
-            await _context.SaveChangesAsync();
+            await _repository.Create(room);
 
             return CreatedAtAction("GetRoom", new { id = room.SId }, room);
         }
 
+       
+        [HttpPut]
+        [ProducesResponseType(typeof(Rooms), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> UpdateRoom([FromBody] Rooms room)
+        {
+            return Ok(_repository.Update(room));
+        }
+
         // DELETE: api/Rooms/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(Rooms), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Rooms>> DeleteRoom(int id)
         {
-            var room = await _context.Room.FindAsync(id);
+            var room = await _repository.GetRoom(id);
             if (room == null)
             {
                 return NotFound();
             }
 
-            _context.Room.Remove(room);
-            await _context.SaveChangesAsync();
-
-            return room;
+            return Ok( _repository.Delete(id));
         }
 
-        private bool RoomExists(int id)
-        {
-            return _context.Room.Any(e => e.SId == id);
-        }
+        
     }
 }
