@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Nusers.API.Data.Interfaces
+namespace Nusers.API.Settings
 {
-    public interface INusers
+    public class IUserDatabaseSettings
     {
-        int UId { get; set; }
+
     }
 }
