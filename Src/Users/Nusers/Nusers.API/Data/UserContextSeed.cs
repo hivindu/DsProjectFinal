@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StudyRoom.API.Data
+namespace Nusers.API.Data
 {
-    public class StudyRoomConytextSeed
+    public class UserContextSeed
     {
-      
-
         internal static void SeedingData()
         {
             throw new NotImplementedException();

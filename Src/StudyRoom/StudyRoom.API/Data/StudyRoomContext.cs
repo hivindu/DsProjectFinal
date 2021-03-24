@@ -13,7 +13,7 @@ namespace StudyRoom.API.Data
     {
         public StudyRoomContext(IStudyRoomDatabaseSettings settings)
         {
-            StudyRoomConytextSeed.SeedingData();
+            StudyRoomContextSeed.SeedingData();
         }
         public DbSet<Rooms> rooms { get; }
     }
