@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StudyRoom.API.Entities
+namespace StudyRoom.API.Model
 {
     public class Rooms
     {
@@ -15,6 +15,5 @@ namespace StudyRoom.API.Entities
         public int Capacity { get; set; }
         public int Options { get; set; }
         public string Location { get; set; }
-
     }
 }

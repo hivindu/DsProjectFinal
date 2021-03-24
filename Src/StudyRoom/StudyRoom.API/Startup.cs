@@ -29,8 +29,9 @@ namespace StudyRoom.API
         {
             services.AddControllers();
 
-            services.AddDbContext<StudyRoomAPIContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("StudyRoomAPIContext")));
+            var connection = @"Server=127.0.0.1,1435;Database=RoomData;User=sa;Password=Staycool@99;";
+
+            services.AddDbContext<StudyRoomDbContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
