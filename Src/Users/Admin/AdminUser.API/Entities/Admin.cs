@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Admin.API.Model
+namespace AdminUser.API.Entities
 {
-    public class AdminEntity
+    public class Admin
     {
         [Key]
         public int UId { get; set; }

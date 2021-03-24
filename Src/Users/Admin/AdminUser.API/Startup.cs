@@ -1,3 +1,7 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -6,19 +10,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using AdminUser.API.Data;
 
-namespace Admin.API
+namespace AdminUser.API
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
         }
 
         public IConfiguration Configuration { get; }
@@ -28,7 +29,8 @@ namespace Admin.API
         {
             services.AddControllers();
 
-         
+            services.AddDbContext<AdminUserDBContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("AdminUserDBContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
