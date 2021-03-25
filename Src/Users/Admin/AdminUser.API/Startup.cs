@@ -29,8 +29,10 @@ namespace AdminUser.API
         {
             services.AddControllers();
 
-            services.AddDbContext<AdminUserDBContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("AdminUserDBContext")));
+            var connection = @"Server=127.0.0.1,9004;Database=UsersData;User=sa;Password=Hanc@1208;";
+
+            services.AddDbContext<AdminUserDBContext>(options => options.UseSqlServer(connection));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
