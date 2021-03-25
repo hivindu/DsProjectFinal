@@ -38,19 +38,30 @@ namespace StudyRoom.API.Repository
         }
 
         
-        public Task Create(Rooms room)
+        public async Task Create(Rooms room)
         {
-            throw new NotImplementedException();
+            string query = "";
+
+           
+            _context.Rooms.FromSqlRaw(query);
         }
 
-        public Task<bool> Update(Rooms room)
+        public async Task<bool> Update(Rooms room)
         {
-            throw new NotImplementedException();
+            string query = "";
+
+            var res = _context.Rooms.FromSqlRaw(query).ToListAsync();
+
+            return Convert.ToBoolean(res);
         }
 
-        public Task<bool> Delete(int Id)
+        public async Task<bool> Delete(int Id)
         {
-            throw new NotImplementedException();
+            string query = "";
+
+            var res = _context.Rooms.FromSqlRaw(query);
+
+            return Convert.ToBoolean(res);
         }
 
 
