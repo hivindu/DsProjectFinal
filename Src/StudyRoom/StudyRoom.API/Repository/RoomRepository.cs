@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Nusers.API.Settings
+namespace StudyRoom.API.Repository
 {
-    public class IUserDatabaseSettings
+    public class RoomRepository
     {
-
     }
 }
