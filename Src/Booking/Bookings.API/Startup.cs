@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Bookings.API.Models;
+using Bookings.API.Data.EFCore;
 
 namespace Bookings.API
 {
@@ -31,6 +32,8 @@ namespace Bookings.API
 
             services.AddDbContext<BookingsAPIContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BookingsAPIContext")));
+
+            services.AddScoped<EFCoreBookingClassRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
