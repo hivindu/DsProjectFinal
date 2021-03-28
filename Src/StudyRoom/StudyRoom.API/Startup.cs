@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using StudyRoom.API.Data;
+using StudyRoom.API.Repository.Interface;
+using StudyRoom.API.Repository;
 
 namespace StudyRoom.API
 {
@@ -29,7 +31,7 @@ namespace StudyRoom.API
         {
             services.AddControllers();
 
-
+            services.AddTransient<IRoomsRepository,RoomRepository>();
 
             var connection = @"Server=127.0.0.1,1435;Database=RoomData;User=sa;Password=Staycool@99;";
 
