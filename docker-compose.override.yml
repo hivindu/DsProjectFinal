@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:   
+    
+    roomData:
+        container_name:roomData
+        ports:
+            - "1436:1433"
+        environment:
+            SA_PASSWORD: "Staycool@99"
+            ACCEPT_EULA: "Y"
+
+    studyroom.api:
+        container_name: studyroomapi
+        restart: on-failure
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ConnectionStrings:StudyRoomDbContext=Server=roomData;Database=RoomData;User Id=sa;Password=Staycool@99;"
+        depends_on:
+            - roomData
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        ports:
+            - "8002:80"
+        

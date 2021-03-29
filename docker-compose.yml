@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+    
+    roomData:
+        image: mcr.microsoft.com/mssql/server
+
+    studyroom.api:
+        image: ${DOCKER_REGISTRY-}studyroomapi
+        build:
+            context: .
+            dockerfile: Src/StudyRoom/StudyRoom.API/Dockerfile

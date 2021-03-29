@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminUser.API", "Src\Users\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NUser", "NUser", "{772A8B2C-D47D-4E05-A8CB-66F015C0A53A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUsers.API", "Src\Users\NUser\NUsers.API\NUsers.API.csproj", "{45244665-4F81-4914-9C4A-28554FA89E9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUsers.API", "Src\Users\NUser\NUsers.API\NUsers.API.csproj", "{45244665-4F81-4914-9C4A-28554FA89E9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookings.API", "Src\Booking\Bookings.API\Bookings.API.csproj", "{099F6CC3-F184-4FF2-AD5B-3D8D68366413}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookings.API", "Src\Booking\Bookings.API\Bookings.API.csproj", "{099F6CC3-F184-4FF2-AD5B-3D8D68366413}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{CD8C6A07-1164-46C8-8C29-0852F5DD0884}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{099F6CC3-F184-4FF2-AD5B-3D8D68366413}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{099F6CC3-F184-4FF2-AD5B-3D8D68366413}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{099F6CC3-F184-4FF2-AD5B-3D8D68366413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD8C6A07-1164-46C8-8C29-0852F5DD0884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD8C6A07-1164-46C8-8C29-0852F5DD0884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD8C6A07-1164-46C8-8C29-0852F5DD0884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD8C6A07-1164-46C8-8C29-0852F5DD0884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
