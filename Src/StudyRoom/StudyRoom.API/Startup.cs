@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using StudyRoom.API.Data;
 using StudyRoom.API.Repository.Interface;
 using StudyRoom.API.Repository;
+using Microsoft.OpenApi.Models;
 
 namespace StudyRoom.API
 {
@@ -36,6 +37,10 @@ namespace StudyRoom.API
             var connection = @"Server=127.0.0.1,1435;Database=RoomData;User=sa;Password=Staycool@99;";
 
             services.AddDbContext<StudyRoomDbContext>(options => options.UseSqlServer(connection));
+
+            services.AddSwaggerGen(c=> {
+                c.SwaggerDoc("v1",new OpenApiInfo{ Title = "Study Room API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +61,9 @@ namespace StudyRoom.API
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Study Room API v1"); });
         }
     }
 }
