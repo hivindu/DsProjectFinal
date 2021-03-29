@@ -1,9 +1,8 @@
 version: '3.4'
 
 services:   
-    
     roomData:
-        container_name:roomData
+        container_name: roomData
         ports:
             - "1436:1433"
         environment:

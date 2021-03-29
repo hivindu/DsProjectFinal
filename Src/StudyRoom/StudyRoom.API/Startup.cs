@@ -34,9 +34,12 @@ namespace StudyRoom.API
 
             services.AddTransient<IRoomsRepository,RoomRepository>();
 
+            //# Connection string local
             var connection = @"Server=127.0.0.1,1435;Database=RoomData;User=sa;Password=Staycool@99;";
+             services.AddDbContext<StudyRoomDbContext>(options => options.UseSqlServer(connection));
 
-            services.AddDbContext<StudyRoomDbContext>(options => options.UseSqlServer(connection));
+            //services.AddDbContext<StudyRoomDbContext>(options =>
+              //      options.UseSqlServer(Configuration.GetConnectionString("StudyRoomDbContext")));
 
             services.AddSwaggerGen(c=> {
                 c.SwaggerDoc("v1",new OpenApiInfo{ Title = "Study Room API", Version = "v1" });
