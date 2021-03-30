@@ -7,7 +7,7 @@ using Bookings.API.Models;
 
 namespace Bookings.API.Data.EFCore
 {
-    public class EFCoreBookingClassRepository : EfCoreRepository<BookingClass, BookingsAPIContext>
+    public class EFCoreBookingClassRepository : EfCoreRepository<Booking, BookingsAPIContext>
     {
         public EFCoreBookingClassRepository(BookingsAPIContext context) : base(context)
         {

@@ -12,7 +12,7 @@ namespace Bookings.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookingController : MyMDBController<BookingClass, EFCoreBookingClassRepository>
+    public class BookingController : MyMDBController<Booking, EFCoreBookingClassRepository>
     {
         public BookingController(EFCoreBookingClassRepository repository) : base(repository)
         {

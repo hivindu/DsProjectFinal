@@ -13,6 +13,6 @@ namespace Bookings.API.Models
         {
         }
 
-        public DbSet<Bookings.API.Models.BookingClass> BookingClass { get; set; }
+        public DbSet<Bookings.API.Models.Booking> BookingClass { get; set; }
     }
 }
