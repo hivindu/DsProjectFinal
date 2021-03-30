@@ -12,6 +12,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using AdminUser.API.Data;
+using AdminUser.API.Repositories.Interface;
+using AdminUser.API.Repositories;
+using Microsoft.OpenApi.Models;
 
 namespace AdminUser.API
 {
@@ -29,9 +32,14 @@ namespace AdminUser.API
         {
             services.AddControllers();
 
-            var connection = @"Server=127.0.0.1,9004;Database=UsersData;User=sa;Password=Hanc@1208;";
+            services.AddTransient<IAdminRepository, AdminRepository>();
 
+            var connection = @"Server=127.0.0.1,9004;Database=UsersData;User=sa;Password=Hanc@1208;";
             services.AddDbContext<AdminUserDBContext>(options => options.UseSqlServer(connection));
+
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Admin User API", Version = "v1" });
+            });
 
         }
 
@@ -53,6 +61,9 @@ namespace AdminUser.API
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Admin User API v1"); });
         }
     }
 }

@@ -7,104 +7,79 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AdminUser.API.Data;
 using AdminUser.API.Entities;
+using AdminUser.API.Repositories.Interface;
+using System.Net;
 
 namespace AdminUser.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly AdminUserDBContext _context;
+        private readonly IAdminRepository _repository;
 
-        public AdminController(AdminUserDBContext context)
+        public AdminController(IAdminRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         // GET: api/Admin
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<Admin>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Admin>>> GetAdminUser()
         {
-            return await _context.AdminUser.ToListAsync();
+            var Admin = await _repository.GetAdminUser();
+
+            return Ok(Admin);
         }
 
         // GET: api/Admin/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetAdmin")]
         public async Task<ActionResult<Admin>> GetAdminUser(int id)
         {
-            var adminUser = await _context.AdminUser.FindAsync(id);
+            var admin = await _repository.GetAdminUser(id);
 
-            if (adminUser == null)
+            if (admin == null)
             {
                 return NotFound();
             }
 
-            return adminUser;
+            return admin;
         }
 
         // PUT: api/Admin/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAdminUser(int id, Admin adminUser)
+        [ProducesResponseType(typeof(Admin), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> UpdateRoom(int id, Admin admin)
         {
-            if (id != adminUser.UId)
+            if (id != admin.UId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(adminUser).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AdminUserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(await _repository.Update(admin));
         }
 
         // POST: api/Admin
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Admin>> PostAdminUser(Admin adminUser)
+        public async Task<ActionResult<Admin>> CreateRoom(Admin admin)
         {
-            _context.AdminUser.Add(adminUser);
-            await _context.SaveChangesAsync();
+            await _repository.Create(admin);
 
-            return CreatedAtAction("GetAdminUser", new { id = adminUser.UId }, adminUser);
+            return CreatedAtAction("GetAdmin", new { id = admin.UId }, admin);
         }
 
         // DELETE: api/Admin/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Admin>> DeleteAdminUser(int id)
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(Admin), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Admin>> DeleteAdmin(int id)
         {
-            var adminUser = await _context.AdminUser.FindAsync(id);
-            if (adminUser == null)
-            {
-                return NotFound();
-            }
-
-            _context.AdminUser.Remove(adminUser);
-            await _context.SaveChangesAsync();
-
-            return adminUser;
-        }
-
-        private bool AdminUserExists(int id)
-        {
-            return _context.AdminUser.Any(e => e.UId == id);
+            return Ok(await _repository.Delete(id));
         }
     }
 }
