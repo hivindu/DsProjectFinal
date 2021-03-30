@@ -27,7 +27,7 @@ namespace StudyRoom.API
                     webBuilder.UseStartup<Startup>();
                 });
 
-        private static void CreateAndSeedDatabase(IHost host)
+        private static async void CreateAndSeedDatabase(IHost host)
         {
             using (var scope  = host.Services.CreateScope())
             {
@@ -37,7 +37,7 @@ namespace StudyRoom.API
                 try
                 {
                     var roomContext = services.GetRequiredService<StudyRoomDbContext>();
-                    StudyRoomDbContextSeed.SeedAsync(roomContext,loggerFactory);
+                    await StudyRoomDbContextSeed.SeedAsync(roomContext,loggerFactory);
                 }
                 catch (Exception exception)
                 {

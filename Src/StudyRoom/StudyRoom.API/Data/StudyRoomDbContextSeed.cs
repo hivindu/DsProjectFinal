@@ -27,21 +27,21 @@ namespace StudyRoom.API.Data
             } 
             catch (Exception exception)
             {
-                if (retryForAvailability<3)
+                if (retryForAvailability < 50)
                 {
                     retryForAvailability++;
                     var log = loggerFactory.CreateLogger<StudyRoomDbContextSeed>();
                     log.LogError(exception.Message);
-                    await SeedAsync(roomContext,loggerFactory,retryForAvailability);
+                    System.Threading.Thread.Sleep(2000);
+                    await SeedAsync(roomContext, loggerFactory, retryForAvailability);
                 }
-            }
+                throw;            }
         }
 
         public static IEnumerable<Rooms> GetPreconfiguredRooms()
         {
             return new List<Rooms> { 
-                new Rooms(){ SId= 006, Capacity= 6, Floor = 2, Location = "Library", Options= 0 },
-                new Rooms(){ SId= 005, Capacity= 4, Floor = 1, Location = "SOC", Options= 1 }
+                new Rooms(){ Capacity= 6, Floor = 2, Location = "Library", Options= 0 }
             };
         }
     }
