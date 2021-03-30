@@ -10,8 +10,7 @@ namespace StudyRoom.API.Migrations
                 name: "Rooms",
                 columns: table => new
                 {
-                    SId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SId = table.Column<int>(nullable: false),
                     Floor = table.Column<int>(nullable: false),
                     Capacity = table.Column<int>(nullable: false),
                     Options = table.Column<int>(nullable: false),

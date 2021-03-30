@@ -35,13 +35,14 @@ namespace StudyRoom.API.Data
                     System.Threading.Thread.Sleep(2000);
                     await SeedAsync(roomContext, loggerFactory, retryForAvailability);
                 }
-                throw;            }
+                throw;            
+            }
         }
 
         public static IEnumerable<Rooms> GetPreconfiguredRooms()
         {
             return new List<Rooms> { 
-                new Rooms(){ Capacity= 6, Floor = 2, Location = "Library", Options= 0 }
+                new Rooms(){ SId = 006, Capacity= 6, Floor = 2, Location = "Library", Options= 0 }
             };
         }
     }
