@@ -24,36 +24,37 @@ namespace AdminUser.API.Repositories
             return await _context.AdminUser.FromSqlRaw(query).ToListAsync();
         }
 
-        public async Task<Admin> GetAdminUser(int Id)
+        public Task<Admin> GetAdminUser(int Id)
         {
             string query = "";
-            return _context.AdminUser.FromSqlRaw(query).FirstOrDefault();
+            return Task.FromResult(_context.AdminUser.FromSqlRaw(query).FirstOrDefault());
         }
 
-        public async Task Create(Admin admin)
+        public Task Create(Admin admin)
         {
             string query = "";
 
 
             _context.AdminUser.FromSqlRaw(query);
+            return Task.CompletedTask;
         }
 
-        public async Task<bool> Update(Admin admin)
+        public Task<bool> Update(Admin admin)
         {
             string query = "";
 
             var res = _context.AdminUser.FromSqlRaw(query).ToListAsync();
 
-            return Convert.ToBoolean(res);
+            return Task.FromResult(Convert.ToBoolean(res));
         }
 
-        public async Task<bool> Delete(int Id)
+        public Task<bool> Delete(int Id)
         {
             string query = "";
 
             var res = _context.AdminUser.FromSqlRaw(query);
 
-            return Convert.ToBoolean(res);
+            return Task.FromResult(Convert.ToBoolean(res));
         }
     }
 }

@@ -26,13 +26,15 @@ namespace AdminUser.API.Data
             }
             catch (Exception exception)
             {
-                if (retryForAvailability < 3)
+                if (retryForAvailability < 50)
                 {
                     retryForAvailability++;
                     var log = loggerFactory.CreateLogger<AdminUserDBContextSeed>();
                     log.LogError(exception.Message);
+                    System.Threading.Thread.Sleep(2000);
                     await SeedAsync(AdminContext, loggerFactory, retryForAvailability);
                 }
+                throw;
             }
         }
         public static IEnumerable<Admin> GetPreconfiguredAdmin()
