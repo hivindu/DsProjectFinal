@@ -2,6 +2,7 @@
 using Booking.API.Entities;
 using Booking.API.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,10 @@ namespace Booking.API.Repository
             _context = context;
         }
 
-        public Task<IEnumerable<Book>> GetBooking(int Id)
+        public async Task<IEnumerable<Book>> GetBooking(int Id)
         {
-            throw new NotImplementedException();
+            string query = "";
+            return await _context.Book.FromSqlRaw(query).ToListAsync();
         }
 
         public Task<IEnumerable<Book>> GetBookingByRoom(int SId)
