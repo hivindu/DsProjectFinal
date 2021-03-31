@@ -1,26 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using Bookings.API.Data;
 
-namespace Bookings.API.Models
+namespace Booking.API.Entities
 {
-    public class Booking 
+    public class Book
     {
         [Key]
-        public int Id { get; set; }
-        public int StudentCount { get; set; }
+        public int BId { get; set; }
         public DateTime FromTime { get; set; }
         public DateTime ToTime { get; set; }
+        public int StudentCount { get; set; }
         public DateTime ReservationDate { get; set; }
         public int UserId { get; set; }
         public string Purpose { get; set; }
-
-        public Booking()
-        {
-
-        }
     }
 }

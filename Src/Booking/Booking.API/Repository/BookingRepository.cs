@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bookings.API.Data
+namespace Booking.API.Repository
 {
-    public interface IBook
+    public class BookingRepository
     {
-        int Id { get; set; }
     }
 }
