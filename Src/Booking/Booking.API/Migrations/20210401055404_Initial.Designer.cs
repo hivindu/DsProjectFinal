@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Booking.API.Migrations
 {
     [DbContext(typeof(BookingDBContext))]
-    [Migration("20210331055708_Initial")]
+    [Migration("20210401055404_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,9 @@ namespace Booking.API.Migrations
 
                     b.Property<DateTime>("ReservationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("SID")
+                        .HasColumnType("int");
 
                     b.Property<int>("StudentCount")
                         .HasColumnType("int");

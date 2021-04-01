@@ -18,6 +18,7 @@ namespace Booking.API.Migrations
                     StudentCount = table.Column<int>(nullable: false),
                     ReservationDate = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
+                    SID = table.Column<int>(nullable: false),
                     Purpose = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

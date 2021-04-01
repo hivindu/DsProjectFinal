@@ -7,18 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Booking.API.Data;
 using Booking.API.Entities;
+using Booking.API.Repository.Interface;
 
 namespace Booking.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class BooksController : ControllerBase
     {
         private readonly BookingDBContext _context;
+        private readonly IBookingRepository _repository;
 
-        public BooksController(BookingDBContext context)
+        public BooksController(IBookingRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         // GET: api/Books

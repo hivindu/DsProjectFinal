@@ -35,6 +35,9 @@ namespace Booking.API.Migrations
                     b.Property<DateTime>("ReservationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("SID")
+                        .HasColumnType("int");
+
                     b.Property<int>("StudentCount")
                         .HasColumnType("int");
 

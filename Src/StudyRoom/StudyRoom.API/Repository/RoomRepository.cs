@@ -51,7 +51,7 @@ namespace StudyRoom.API.Repository
 
             var rest = _context.Database.ExecuteSqlCommand("EXEC InsStudyRoom @SId='"+id+"', @Floor='"+floor+"',@Capacity='"+capacity+"',@location='"+capacity+"',@type='"+option+"'");
             //var res = _context.Database.ExecuteSqlRaw("EXEC InsStudyRoom @SId, @Floor,@Capacity,@location,@type", parameters:new[] {""+ids+"",""+floor+""+capacity+"",""+location+"",""+option+""});
-
+            
         }
 
         public async Task<bool> Update(Rooms room)

@@ -1,6 +1,7 @@
 ﻿using Booking.API.Data;
 using Booking.API.Entities;
 using Booking.API.Repository.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,40 +19,56 @@ namespace Booking.API.Repository
             _context = context;
         }
 
-        public async Task<IEnumerable<Book>> GetBooking(int Id)
+        public async Task<ActionResult<IEnumerable<Book>>> GetBookings()
         {
-            string query = "";
+            string query = "EXEC SelAllBookings";
             return await _context.Book.FromSqlRaw(query).ToListAsync();
         }
 
-        public Task<IEnumerable<Book>> GetBookingByRoom(int SId)
+        public async Task<IEnumerable<Book>> GetBooking(int Id)
         {
-            throw new NotImplementedException();
+            string query = "EXEC SelBookingById @id=" + Id + "";
+            return await _context.Book.FromSqlRaw(query).ToListAsync();
         }
 
-        public Task<IEnumerable<Book>> GetBookingByUser(int UId)
+        public async Task<IEnumerable<Book>> GetBookingByRoom(int SId)
         {
-            throw new NotImplementedException();
+            string query = "EXEC SelAllBookingsByRoom @id=" + SId + "";
+            return await _context.Book.FromSqlRaw(query).ToListAsync();
         }
 
-        public Task<ActionResult<IEnumerable<Book>>> GetBookings()
+        public async Task<IEnumerable<Book>> GetBookingByUser(int UId)
         {
-            throw new NotImplementedException();
+            string query = "EXEC SelAllBookingsByUser @id=" + UId + "";
+            return await _context.Book.FromSqlRaw(query).ToListAsync();
         }
 
-        public Task Create(Book reservation)
+        public async Task Create(Book reservation)
         {
-            throw new NotImplementedException();
+            DateTime FDate = reservation.FromTime;
+            DateTime TDate = reservation.ReservationDate;
+            int StudentCount = reservation.StudentCount;
+            DateTime rdate = reservation.ReservationDate;
+            int uid = reservation.UserId;
+            int sid = reservation.SID;
+            string purpose = reservation.Purpose;
+            var rest = _context.Database.ExecuteSqlCommand("EXEC InsBooking  @count ='" + StudentCount + "', @ftime='" + FDate + "',@ttime='" + TDate + "',@rdate='" + rdate + "',@uid='" + uid + "',@sid='"+ sid + "',@purpose='"+ purpose + "'");
+
         }
 
-        public Task<bool> Update(Book reservation)
+        public async Task<bool> Update(Book reservation)
         {
-            throw new NotImplementedException();
+            
+            var res = _context.Database.ExecuteSqlCommand("EXEC UpdBook @bid='" + reservation.BId + "',@Count='" + reservation.StudentCount + "',@Ftime='" + reservation.FromTime + "',@Ttime='" + reservation.ToTime + "',@Date='" + reservation.ReservationDate + "',@Uid='"+reservation.UserId+ "',@Sid='"+reservation.SID+ "',@Purpose='"+reservation.Purpose+"'");
+
+            return Convert.ToBoolean(res);
         }
 
-        public Task<bool> Delete(int Id)
+        public async Task<bool> Delete(int Id)
         {
-            throw new NotImplementedException();
+            var res = _context.Database.ExecuteSqlCommand("EXEC DelBooking @sid='" + Id + "'");
+
+            return Convert.ToBoolean(res);
         }
 
     }
