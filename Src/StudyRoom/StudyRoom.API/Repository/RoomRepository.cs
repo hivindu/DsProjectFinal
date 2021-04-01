@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using StudyRoom.API.Data;
 using StudyRoom.API.Model;
 using StudyRoom.API.Repository.Interface;
@@ -20,46 +21,53 @@ namespace StudyRoom.API.Repository
 
         public async Task<IEnumerable<Rooms>> GetRooms()
         {
-            string query = "";
+            string query = "EXEC SelAllRooms;";
             return await _context.Rooms.FromSqlRaw(query).ToListAsync();
         }
 
-        public async Task<Rooms> GetRoom(int Id)
+        public async Task<IEnumerable<Rooms>> GetRoom(int Id)
         {
-            string query = "";
-            return  _context.Rooms.FromSqlRaw(query).FirstOrDefault();
+            
+            return await  _context.Rooms.FromSqlRaw("EXEC SelRoomById @id="+Id+"").ToListAsync();
         }
 
         public async Task<IEnumerable<Rooms>> GetRoomByOption(int option)
         {
-            string query = "";
+            //string query = "";
 
-            return await _context.Rooms.FromSqlRaw(query).ToListAsync();
+            return await _context.Rooms.FromSqlRaw("EXEC SelRoomByOption @option =" + option + "").ToListAsync();
         }
 
         
         public async Task Create(Rooms room)
         {
-            string query = "";
+            // string query = "EXEC InsStudyRoom @SId="+room.SId+ ",@Floor="+room.Floor+ ",@Capacity="+room.Capacity+ ",@location="+room.Location+ ",@type="+room.Options+"";
 
-           
-            _context.Rooms.FromSqlRaw(query);
+            int id = room.SId;
+            int floor = room.Floor;
+            int capacity = room.Capacity;
+            string location = room.Location;
+            int option = room.Options;
+
+            var rest = _context.Database.ExecuteSqlCommand("EXEC InsStudyRoom @SId='"+id+"', @Floor='"+floor+"',@Capacity='"+capacity+"',@location='"+capacity+"',@type='"+option+"'");
+            //var res = _context.Database.ExecuteSqlRaw("EXEC InsStudyRoom @SId, @Floor,@Capacity,@location,@type", parameters:new[] {""+ids+"",""+floor+""+capacity+"",""+location+"",""+option+""});
+
         }
 
         public async Task<bool> Update(Rooms room)
         {
-            string query = "";
+           // string query = "EXEC UpdRoom @SId="+room.SId+ ",@Floor="+room.Floor+ ",@Capacity="+room.Capacity+ ",@location="+room.Location+ ",@type="+room.Options+"";
 
-            var res = _context.Rooms.FromSqlRaw(query).ToListAsync();
+            var res = _context.Database.ExecuteSqlCommand("EXEC UpdRoom @SId='" + room.SId + "',@Floor='" + room.Floor + "',@Capacity='" + room.Capacity + "',@location='" + room.Location + "',@Options='" + room.Options + "'");
 
             return Convert.ToBoolean(res);
         }
 
         public async Task<bool> Delete(int Id)
         {
-            string query = "";
+            string query = "EXEC DelRoom @sid="+Id+"";
 
-            var res = _context.Rooms.FromSqlRaw(query);
+            var res = _context.Database.ExecuteSqlCommand("EXEC DelRoom @sid='" + Id + "'");
 
             return Convert.ToBoolean(res);
         }

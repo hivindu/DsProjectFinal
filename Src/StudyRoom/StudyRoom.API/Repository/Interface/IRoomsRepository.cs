@@ -10,7 +10,7 @@ namespace StudyRoom.API.Repository.Interface
     {
         Task<IEnumerable<Rooms>> GetRooms();
 
-        Task<Rooms> GetRoom(int Id);
+        Task<IEnumerable<Rooms>> GetRoom(int Id);
 
         Task<IEnumerable<Rooms>> GetRoomByOption(int option);
 

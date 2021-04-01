@@ -31,6 +31,8 @@ namespace StudyRoom.API.Controllers
 
         // GET: api/Rooms/5
         [HttpGet("{id}", Name = "GetRooms")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(Rooms), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Rooms>> GetRoom(int id)
         {
             var rooms = await _repository.GetRoom(id);
@@ -40,10 +42,10 @@ namespace StudyRoom.API.Controllers
                 return NotFound();
             }
 
-            return rooms;
+            return Ok(rooms);
         }
 
-        [HttpGet("{option}")]
+        [HttpGet("[action]/{option}")]
         [ProducesResponseType(typeof(IEnumerable<Rooms>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Rooms>> GetRoomByOption(int option)
         {
@@ -72,11 +74,11 @@ namespace StudyRoom.API.Controllers
         // PUT: api/Rooms/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
+        [HttpPut]
         [ProducesResponseType(typeof(Rooms), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateRoom(int id, Rooms rooms)
+        public async Task<IActionResult> UpdateRoom([FromBody] Rooms rooms)
         {
-            if (id != rooms.SId)
+            if (rooms.SId != rooms.SId)
             {
                 return BadRequest();
             }
