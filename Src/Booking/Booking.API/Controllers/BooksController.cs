@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Booking.API.Data;
 using Booking.API.Entities;
 using Booking.API.Repository.Interface;
+using System.Net;
 
 namespace Booking.API.Controllers
 {
@@ -25,88 +26,80 @@ namespace Booking.API.Controllers
 
         // GET: api/Books
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<Book>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Book>>> GetBook()
         {
-            return await _context.Book.ToListAsync();
+            return await _repository.GetBookings();
         }
 
         // GET: api/Books/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}",Name ="GetRoom")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(Book), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Book>> GetBook(int id)
         {
-            var book = await _context.Book.FindAsync(id);
+            var book = await _repository.GetBooking(id);
 
             if (book == null)
             {
                 return NotFound();
             }
 
-            return book;
+            return Ok(book);
         }
 
-        // PUT: api/Books/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBook(int id, Book book)
+        [HttpGet("[action]/{SID}")]
+        [ProducesResponseType(typeof(IEnumerable<Book>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Book>>> GetBookingsByRoom(int SID)
         {
-            if (id != book.BId)
+            var bookings = await _repository.GetBookingByRoom(SID);
+
+            if (bookings == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(book).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BookExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(bookings);
         }
 
-        // POST: api/Books
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpGet("[action]/{UID}")]
+        [ProducesResponseType(typeof(IEnumerable<Book>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Book>>> GetBookingsByUser(int UID)
+        {
+            var bookings = await _repository.GetBookingByUser(UID);
+
+            if (bookings == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(bookings);
+        }
+
         [HttpPost]
-        public async Task<ActionResult<Book>> PostBook(Book book)
+        public async Task<ActionResult<Book>> AddBooking(Book book)
         {
-            _context.Book.Add(book);
-            await _context.SaveChangesAsync();
+            await _repository.Create(book);
 
             return CreatedAtAction("GetBook", new { id = book.BId }, book);
         }
 
-        // DELETE: api/Books/5
+        
+        [HttpPut]
+        [ProducesResponseType(typeof(Book), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> UpdateBooking([FromBody] Book book)
+        {
+            return Ok(await _repository.Update(book));
+        }
+
+       
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Book>> DeleteBook(int id)
+        [ProducesResponseType(typeof(Book), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Book>> DeleteBooking(int id)
         {
-            var book = await _context.Book.FindAsync(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            _context.Book.Remove(book);
-            await _context.SaveChangesAsync();
-
-            return book;
+            return Ok(await _repository.Delete(id));
         }
 
-        private bool BookExists(int id)
-        {
-            return _context.Book.Any(e => e.BId == id);
-        }
+        
     }
 }
