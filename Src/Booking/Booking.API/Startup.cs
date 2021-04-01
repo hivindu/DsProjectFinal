@@ -12,6 +12,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Booking.API.Data;
+using Booking.API.Repository.Interface;
+using Booking.API.Repository;
+using Microsoft.OpenApi.Models;
 
 namespace Booking.API
 {
@@ -31,6 +34,12 @@ namespace Booking.API
 
             services.AddDbContext<BookingDBContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BookingDBContext")));
+            services.AddTransient<IBookingRepository, BookingRepository>();
+
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Booking API", Version = "v1" });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +60,9 @@ namespace Booking.API
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Booking API v1"); });
         }
     }
 }

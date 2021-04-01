@@ -32,6 +32,7 @@ namespace StudyRoom.API
         {
             services.AddControllers();
 
+            // Repository class configuration
             services.AddTransient<IRoomsRepository,RoomRepository>();
 
             //# Connection string local
