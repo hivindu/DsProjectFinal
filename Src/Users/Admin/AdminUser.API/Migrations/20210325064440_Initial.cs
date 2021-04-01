@@ -10,8 +10,7 @@ namespace AdminUser.API.Migrations
                 name: "AdminUser",
                 columns: table => new
                 {
-                    UId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UId = table.Column<int>(nullable: false),
                     F_name = table.Column<string>(nullable: true),
                     L_name = table.Column<string>(nullable: true),
                     Contact = table.Column<int>(nullable: false),

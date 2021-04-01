@@ -5,15 +5,17 @@ services:
     roomData:
         image: mcr.microsoft.com/mssql/server
 
+    userData:
+        image: mcr.microsoft.com/mssql/server
+
     studyroom.api:
         image: ${DOCKER_REGISTRY-}studyroomapi
         build:
             context: .
             dockerfile: Src/StudyRoom/StudyRoom.API/Dockerfile
-
-  adminuser.api:
-    image: ${DOCKER_REGISTRY-}adminuserapi
-    build:
-      context: .
-      dockerfile: Src/Users/Admin/AdminUser.API/Dockerfile
+    adminuser.api:
+        image: ${DOCKER_REGISTRY-}adminuserapi
+        build:
+            context: .
+            dockerfile: Src/Users/Admin/AdminUser.API/Dockerfile
 
