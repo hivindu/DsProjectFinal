@@ -9,7 +9,7 @@ using NUsers.API.Data;
 namespace NUsers.API.Migrations
 {
     [DbContext(typeof(NUsersDBContext))]
-    [Migration("20210325065425_Initial")]
+    [Migration("20210402172332_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
