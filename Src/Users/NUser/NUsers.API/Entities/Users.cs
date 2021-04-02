@@ -18,5 +18,6 @@ namespace NUsers.API.Entities
         public string Batch { get; set; }
         public string Degree { get; set; }
         public string Password { get; set; }
+        public int Type { get; set; }
     }
 }

@@ -32,6 +32,9 @@ namespace NUsers.API
             var connection = @"Server=127.0.0.1,9004;Database=UserData;User=sa;Password=Hanc@1208;";
 
             services.AddDbContext<NUsersDBContext>(options => options.UseSqlServer(connection));
+
+            //services.AddDbContext<StudyRoomDbContext>(options =>
+               //     options.UseSqlServer(Configuration.GetConnectionString("NUsersDBContext")), ServiceLifetime.Singleton);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

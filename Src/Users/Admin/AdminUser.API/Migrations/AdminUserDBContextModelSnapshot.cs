@@ -46,6 +46,9 @@ namespace AdminUser.API.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
                     b.HasKey("UId");
 
                     b.ToTable("AdminUser");
