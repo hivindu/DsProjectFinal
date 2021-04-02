@@ -1,0 +1,14 @@
+services:
+    studyroom.api:
+        image: studyroomapi
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ConnectionStrings:StudyRoomDbContext=Server=roomData;Database=RoomData;User Id=sa;Password=Staycool@99;"
+        ports:
+            - "8003:80"
+        depends_on:
+            - roomData
+        deploy:
+            replicas: 3
+
+version: '3.5'
