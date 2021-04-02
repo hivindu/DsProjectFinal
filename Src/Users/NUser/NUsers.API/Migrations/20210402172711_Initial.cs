@@ -18,7 +18,8 @@ namespace NUsers.API.Migrations
                     Address = table.Column<string>(nullable: true),
                     Batch = table.Column<string>(nullable: true),
                     Degree = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true)
+                    Password = table.Column<string>(nullable: true),
+                    Type = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
