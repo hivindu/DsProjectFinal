@@ -1,3 +1,41 @@
 {
-
+  "ReRoutes": [
+    //StudyRoom API
+    {
+      "DownstreamPathTemplate": "api/v1/Rooms",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "studyroomapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "StudyRooms/",
+      "UpstreamHttpMethods": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "api/v1/Rooms/{id}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "studyroomapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "StudyRooms/{id}",
+      "UpstreamHttpMethods": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "api/v1/Rooms/GetRoomByOption/{option}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "studyroomapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "StudyRooms/GetRoomByOption/{option}",
+      "UpstreamHttpMethods": [ "GET" ]
+    }
+  ]
 }
