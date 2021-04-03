@@ -36,6 +36,34 @@
       ],
       "UpstreamePatTemplate": "StudyRooms/GetRoomByOption/{option}",
       "UpstreamHttpMethods": [ "GET" ]
+    },
+    //AdminUser API
+    {
+      "DownstreamPathTemplate": "api/v1/Admin",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "AdminUser/",
+      "UpstreamHttpMethods": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "api/v1/Admin/{id}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "AdminUser/{id}",
+      "UpstreamHttpMethods": [ "GET", "DELETE" ]
     }
+    //NUser API
+
+    //Booking API
   ]
 }
