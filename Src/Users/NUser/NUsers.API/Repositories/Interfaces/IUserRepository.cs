@@ -12,9 +12,9 @@ namespace NUsers.API.Repositories.Interfaces
 
         Task<Users> GetUsers(int Id);
 
-        Task<IEnumerable<Users>> GetUserByDegree(int degree);
+        Task<IEnumerable<Users>> GetUserByDegree(string degree);
 
-        Task<IEnumerable<Users>> GetUserByBatch(int batch);
+        Task<IEnumerable<Users>> GetUserByBatch(string batch);
 
         Task Create(Users user);
 
