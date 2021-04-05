@@ -18,4 +18,8 @@ services:
         build:
             context: .
             dockerfile: Src/Users/Admin/AdminUser.API/Dockerfile
-
+    nusers.api:
+        image: ${DOCKER_REGISTRY-}nusersapi
+        build:
+          context: .
+          dockerfile: Src/Users/NUser/NUsers.API/Dockerfile

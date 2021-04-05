@@ -29,7 +29,6 @@ services:
             - ${HOME}/.aspnet/https:/root/.aspnet/https/
         ports:
             - "8002:80"
-
     adminuser.api:
         container_name: adminuserapi
         restart: on-failure
@@ -43,3 +42,16 @@ services:
         volumes:
           - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
           - ${HOME}/.aspnet/https:/root/.aspnet/https/
+    nusers.api:
+        container_name: nuserapi
+        restart: on-failure
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ConnectionStrings:NUserDBContext=Server=userData;Database=UserData;User Id=sa;Password=Hanc@1208;"
+        depends_on:
+            - userData
+        ports:
+            - "8004:80"
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
