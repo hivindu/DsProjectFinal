@@ -61,9 +61,33 @@
       ],
       "UpstreamePatTemplate": "AdminUser/{id}",
       "UpstreamHttpMethods": [ "GET", "DELETE" ]
-    }
+    },
     //NUser API
-
+    {
+      "DownstreamPathTemplate": "api/v1/Users/",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "NUsers/",
+      "UpstreamHttpMethods": [ "GET", "PUT", "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "api/v1/Users/{id}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "NUsers/{id}",
+      "UpstreamHttpMethods": [ "GET", "DELETE" ]
+    }
     //Booking API
+
   ]
 }
