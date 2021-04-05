@@ -86,8 +86,56 @@
       ],
       "UpstreamePatTemplate": "NUsers/{id}",
       "UpstreamHttpMethods": [ "GET", "DELETE" ]
-    }
+    },
     //Booking API
+    {
+      "DownstreamPathTemplate": "api/v1/Books/",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookingapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "Books/",
+      "UpstreamHttpMethods": [ "GET", "PUT", "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "api/v1/Books/{id}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookingapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "Books/{id}",
+      "UpstreamHttpMethods": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "api/v1/Books/GetBookingsByRoom/{SID}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookingapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "Books/GetBookingsByRoom/{SID}",
+      "UpstreamHttpMethods": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "api/v1/Books/GetBookingsByUser/{UID}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookingapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "Books/GetBookingsByUser/{UID}",
+      "UpstreamHttpMethods": [ "GET" ]
+    }
 
   ]
 }
