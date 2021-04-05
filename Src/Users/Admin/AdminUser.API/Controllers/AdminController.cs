@@ -75,7 +75,6 @@ namespace AdminUser.API.Controllers
 
         // DELETE: api/Admin/5
         [HttpDelete("{id}")]
-        [HttpDelete("{id}")]
         [ProducesResponseType(typeof(Admin), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Admin>> DeleteAdmin(int id)
         {

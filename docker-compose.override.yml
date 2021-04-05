@@ -15,7 +15,13 @@ services:
         environment:
             SA_PASSWORD: "Hanc@1208"
             ACCEPT_EULA: "Y"
-
+    bookngData:
+        container_name: bookingData
+        ports:
+            - "9009:1433"
+        environment:
+            SA_PASSWORD: "Staycool@99"
+            ACCEPT_EULA: "Y"
     studyroom.api:
         container_name: studyroomapi
         restart: on-failure
@@ -43,3 +49,14 @@ services:
         volumes:
           - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
           - ${HOME}/.aspnet/https:/root/.aspnet/https/
+    booking.api:
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ConnectionStrings:BookingDBContext=Server=bookingData;Database=BookingData;User Id=sa;Password=Staycool@99;"
+        ports:
+            - "8001:80"
+        depends_on : 
+            - bookingData
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/

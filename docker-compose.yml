@@ -8,6 +8,9 @@ services:
     userData:
         image: mcr.microsoft.com/mssql/server
 
+    bookngData:
+        image: mcr.microsoft.com/mssql/server
+
     studyroom.api:
         image: ${DOCKER_REGISTRY-}studyroomapi
         build:
@@ -18,4 +21,9 @@ services:
         build:
             context: .
             dockerfile: Src/Users/Admin/AdminUser.API/Dockerfile
+    booking.api:
+        image: ${DOCKER_REGISTRY-}bookingapi
+        build:
+            context: .
+            dockerfile: Src/Booking/Booking.API/Dockerfile
 

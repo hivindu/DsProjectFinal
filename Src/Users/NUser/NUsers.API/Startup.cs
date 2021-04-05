@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using NUsers.API.Data;
+using Microsoft.OpenApi.Models;
 
 namespace NUsers.API
 {
@@ -32,6 +33,10 @@ namespace NUsers.API
             var connection = @"Server=127.0.0.1,9004;Database=UserData;User=sa;Password=Hanc@1208;";
 
             services.AddDbContext<NUsersDBContext>(options => options.UseSqlServer(connection));
+
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Normal User API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +57,9 @@ namespace NUsers.API
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Normal User API v1"); });
         }
     }
 }
