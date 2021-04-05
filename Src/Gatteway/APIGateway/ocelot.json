@@ -87,6 +87,30 @@
       "UpstreamePatTemplate": "NUsers/{id}",
       "UpstreamHttpMethods": [ "GET", "DELETE" ]
     },
+    {
+      "DownstreamPathTemplate": "api/v1/Users/GetUserByDegree/{degree}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "NUsers/GetUserByDegree/{degree}",
+      "UpstreamHttpMethods": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "api/v1/Users/GetUserByBatch/{batch}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamePatTemplate": "NUsers/GetUserByBatch/{batch}",
+      "UpstreamHttpMethods": [ "GET", "DELETE" ]
+    },
     //Booking API
     {
       "DownstreamPathTemplate": "api/v1/Books/",
