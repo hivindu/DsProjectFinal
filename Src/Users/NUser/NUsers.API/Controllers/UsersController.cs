@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NUsers.API.Data;
 using NUsers.API.Entities;
+using NUsers.API.Repositories.Interfaces;
 
 namespace NUsers.API.Controllers
 {
@@ -14,25 +16,28 @@ namespace NUsers.API.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly NUsersDBContext _context;
+        private readonly IUserRepository _repository;
 
-        public UsersController(NUsersDBContext context)
+        public UsersController(IUserRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
-        // GET: api/Users
+        // GET: api/User
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<Users>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            var Users = await _repository.GetUsers();
+
+            return Ok(Users);
         }
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(int id)
+        // GET: api/User/5
+        [HttpGet("{id}", Name = "GetUsers")]
+        public async Task<ActionResult<Users>> GetAdminUser(int id)
         {
-            var users = await _context.Users.FindAsync(id);
+            var users = await _repository.GetUsers(id);
 
             if (users == null)
             {
@@ -42,69 +47,66 @@ namespace NUsers.API.Controllers
             return users;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/User/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(int id, Users users)
+        [ProducesResponseType(typeof(Users), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> UpdateUser(int id, Users users)
         {
             if (id != users.UId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(users).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UsersExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(await _repository.Update(users));
         }
 
-        // POST: api/Users
+        // POST: api/User
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users users)
+        public async Task<ActionResult<Users>> CreateUser(Users users)
         {
-            _context.Users.Add(users);
-            await _context.SaveChangesAsync();
+            await _repository.Create(users);
 
             return CreatedAtAction("GetUsers", new { id = users.UId }, users);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/User/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Users>> DeleteUsers(int id)
+        [ProducesResponseType(typeof(Users), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Users>> DeleteUser(int id)
         {
-            var users = await _context.Users.FindAsync(id);
+            return Ok(await _repository.Delete(id));
+        }
+
+        [HttpGet("[action]/{degree}")]
+        [ProducesResponseType(typeof(IEnumerable<Users>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Users>> GetUserByDegree(string degree)
+        {
+            var users = await _repository.GetUserByDegree(degree);
+
             if (users == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(users);
-            await _context.SaveChangesAsync();
-
-            return users;
+            return Ok(users);
         }
 
-        private bool UsersExists(int id)
+        [HttpGet("[action]/{batch}")]
+        [ProducesResponseType(typeof(IEnumerable<Users>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Users>> GetUserByBatch(string batch)
         {
-            return _context.Users.Any(e => e.UId == id);
+            var users = await _repository.GetUserByBatch(batch);
+
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(users);
         }
     }
 }
