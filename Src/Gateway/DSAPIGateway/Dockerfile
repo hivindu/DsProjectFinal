@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["Src/Gatteway/APIGateway/APIGateway.csproj", "Src/Gatteway/APIGateway/"]
-RUN dotnet restore "Src/Gatteway/APIGateway/APIGateway.csproj"
+COPY ["Src/Gateway/DSAPIGateway/DSAPIGateway.csproj", "Src/Gateway/DSAPIGateway/"]
+RUN dotnet restore "Src/Gateway/DSAPIGateway/DSAPIGateway.csproj"
 COPY . .
-WORKDIR "/src/Src/Gatteway/APIGateway"
-RUN dotnet build "APIGateway.csproj" -c Release -o /app/build
+WORKDIR "/src/Src/Gateway/DSAPIGateway"
+RUN dotnet build "DSAPIGateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "APIGateway.csproj" -c Release -o /app/publish
+RUN dotnet publish "DSAPIGateway.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "APIGateway.dll"]
+ENTRYPOINT ["dotnet", "DSAPIGateway.dll"]

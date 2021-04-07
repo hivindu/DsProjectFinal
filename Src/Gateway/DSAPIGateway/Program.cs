@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace APIGateway
+namespace DSAPIGateway
 {
     public class Program
     {
@@ -22,7 +22,7 @@ namespace APIGateway
                 {
                     webBuilder.UseStartup<Startup>();
                 })
-            .ConfigureAppConfiguration((hostingContext,config)=> 
+            .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.AddJsonFile("ocelot.json");
             });

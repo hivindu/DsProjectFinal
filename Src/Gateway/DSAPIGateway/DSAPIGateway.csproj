@@ -3,19 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
-    <UserSecretsId>1892cecc-23b7-4905-b961-979cd3a1b0b8</UserSecretsId>
+    <UserSecretsId>f5fb552b-27ca-431c-adff-61aff409bc49</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
     <PackageReference Include="Ocelot" Version="15.0.7" />
   </ItemGroup>
-
 
 </Project>

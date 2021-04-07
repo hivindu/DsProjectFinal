@@ -2,20 +2,25 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/DSAPIGateway",
+      "sslPort": 0
+    },
     "iisExpress": {
-      "applicationUrl": "http://localhost:65325/",
-      "sslPort": 44361
+      "applicationUrl": "http://localhost:56499",
+      "sslPort": 44386
     }
   },
   "profiles": {
     "IIS Express": {
-      "commandName": "IISExpress",
+      "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:5000"
     },
-    "APIGateway": {
+    "DSAPIGateway": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

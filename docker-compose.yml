@@ -31,8 +31,9 @@ services:
         build:
           context: .
           dockerfile: Src/Booking/Booking.API/Dockerfile
-    apigateway:
-        image: ${DOCKER_REGISTRY-}apigateway
+    dsapigateway:
+        image: ${DOCKER_REGISTRY-}dsapigateway
         build:
             context: .
-            dockerfile: Src/Gatteway/APIGateway/Dockerfile
+            dockerfile: Src/Gateway/DSAPIGateway/Dockerfile
+

@@ -1,5 +1,5 @@
 {
-  "ReRoutes": [
+  "Routes": [
     //StudyRoom API
     {
       "DownstreamPathTemplate": "api/v1/Rooms",
