@@ -20,41 +20,46 @@ namespace AdminUser.API.Repositories
 
         public async Task<IEnumerable<Admin>> GetAdminUser()
         {
-            string query = "";
+            string query = "EXEC SelAllAdmins;";
             return await _context.AdminUser.FromSqlRaw(query).ToListAsync();
         }
 
         public Task<Admin> GetAdminUser(int Id)
         {
-            string query = "";
+            string query = "EXEC SelAdminById @id=" + Id + "";
             return Task.FromResult(_context.AdminUser.FromSqlRaw(query).FirstOrDefault());
         }
 
-        public Task Create(Admin admin)
+        public async Task Create(Admin admin)
         {
-            string query = "";
+            int id = admin.UId;
+            string f_name = admin.F_name;
+            string l_name = admin.L_name;
+            int contact = admin.Contact;
+            string address = admin.Address;
+            string batch = admin.Batch;
+            string degree = admin.Degree;
+            string password = admin.Password;
+            int type = admin.Type;
 
+            var rest = _context.Database.ExecuteSqlCommand("EXEC InsAdmin @UId='" + id + "', @F_name='" + f_name + "',@L_name='" + l_name + "',@Contact='" + contact + "',@Address='" + address + "' ,@Batch = '" + batch + "', @Degree = '" + degree + "', @Password = '" + password + "', @Type = '" + type + "'");
 
-            _context.AdminUser.FromSqlRaw(query);
-            return Task.CompletedTask;
         }
 
-        public Task<bool> Update(Admin admin)
+        public async Task<bool> Update(Admin admin)
         {
-            string query = "";
+            var res = _context.Database.ExecuteSqlCommand("EXEC UpdUser @UId='" + admin.UId + "',@F_name='" + admin.F_name + "',@L_name='" + admin.L_name + "',@Contact='" + admin.Contact + "',@Address='" + admin.Address + "',@Batch='" + admin.Batch + "',@Degree='" + admin.Degree + "',@Password='" + admin.Password + "',@Type='" + admin.Type + "'");
 
-            var res = _context.AdminUser.FromSqlRaw(query).ToListAsync();
-
-            return Task.FromResult(Convert.ToBoolean(res));
+            return Convert.ToBoolean(res);
         }
 
-        public Task<bool> Delete(int Id)
+        public async Task<bool> Delete(int id)
         {
-            string query = "";
+            string query = "EXEC DelAdmin @Uid=" + id + "";
 
-            var res = _context.AdminUser.FromSqlRaw(query);
+            var res = _context.Database.ExecuteSqlCommand("EXEC DelUser @Uid='" + id + "'");
 
-            return Task.FromResult(Convert.ToBoolean(res));
+            return Convert.ToBoolean(res);
         }
     }
 }

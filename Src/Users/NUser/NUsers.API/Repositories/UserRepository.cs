@@ -66,17 +66,17 @@ namespace NUsers.API.Repositories
         {
             //string query = "";
 
-            var res = _context.Database.ExecuteSqlCommand("EXEC UpdRoom @UId='" + user.UId + "',@F_name='" + user.F_name + "',@L_name='" + user.L_name + "',@Contact='" + user.Contact + "',@Address='" + user.Address + "',@Batch='" + user.Batch + "',@Degree='" + user.Degree + "',@Password='" + user.Password + "',@Type='" + user.Type + "'");
+            var res = _context.Database.ExecuteSqlCommand("EXEC UpdUser @UId='" + user.UId + "',@F_name='" + user.F_name + "',@L_name='" + user.L_name + "',@Contact='" + user.Contact + "',@Address='" + user.Address + "',@Batch='" + user.Batch + "',@Degree='" + user.Degree + "',@Password='" + user.Password + "',@Type='" + user.Type + "'");
 
 
             return Convert.ToBoolean(res);
         }
 
-        public async Task<bool> Delete(int Id)
+        public async Task<bool> Delete(int id)
         {
-            string query = "EXEC DelUser @Uid=" + Id + "";
+            string query = "EXEC DelUser @Uid=" + id + "";
 
-            var res = _context.Database.ExecuteSqlCommand("EXEC DelUser @Uid='" + Id + "'");
+            var res = _context.Database.ExecuteSqlCommand("EXEC DelUser @Uid='" + id + "'");
 
             return Convert.ToBoolean(res);
         }
