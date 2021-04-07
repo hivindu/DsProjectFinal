@@ -17,10 +17,10 @@ services:
             ACCEPT_EULA: "Y"
     bookingData:
         container_name: bookingData
-        ports: 
+        ports:
             - "9009:1433"
         environment:
-            SA_PASSWORD:"Staycool@99"
+            SA_PASSWORD: "Staycool@99"
             ACCEPT_EULA: "Y"
 
     studyroom.api:
