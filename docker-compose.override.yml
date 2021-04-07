@@ -20,7 +20,7 @@ services:
         ports: 
             - "9009:1433"
         environment:
-            SA_PASSWORD:"Staycool@99"
+            SA_PASSWORD: "Staycool@99"
             ACCEPT_EULA: "Y"
 
     studyroom.api:
@@ -40,15 +40,15 @@ services:
         container_name: adminuserapi
         restart: on-failure
         environment:
-          - ASPNETCORE_ENVIRONMENT=Development
-          - "ConnectionStrings:AdminUserDBContext=Server=userData;Database=UserData;User Id=sa;Password=Hanc@1208;"
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ConnectionStrings:AdminUserDBContext=Server=userData;Database=UserData;User Id=sa;Password=Hanc@1208;"
         depends_on:
             - userData
         ports:
-          - "8003:80"
+            - "8003:80"
         volumes:
-          - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
-          - ${HOME}/.aspnet/https:/root/.aspnet/https/
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
     nusers.api:
         container_name: nuserapi
         restart: on-failure
