@@ -51,7 +51,7 @@ namespace AdminUser.API.Repositories
         public Task<bool> Delete(int Id)
         {
             string query = "";
-
+            
             var res = _context.AdminUser.FromSqlRaw(query);
 
             return Task.FromResult(Convert.ToBoolean(res));
