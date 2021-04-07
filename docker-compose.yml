@@ -31,9 +31,10 @@ services:
         build:
           context: .
           dockerfile: Src/Booking/Booking.API/Dockerfile
-    dsapigateway:
-        image: ${DOCKER_REGISTRY-}dsapigateway
+    
+    ocelotapigateway:
+        image: ${DOCKER_REGISTRY-}ocelotapigateway
         build:
-            context: .
-            dockerfile: Src/Gateway/DSAPIGateway/Dockerfile
+          context: .
+          dockerfile: Src/Gateway/OcelotAPIGateway/Dockerfile
 

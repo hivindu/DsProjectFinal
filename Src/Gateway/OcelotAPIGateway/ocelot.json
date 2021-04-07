@@ -1,0 +1,30 @@
+{
+  "ReRoutes": [
+    //study room api
+    {
+      "DownstreamPathTemplate": "/api/v1/Rooms",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "studyroomapi",
+          "Ports": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Rooms",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Rooms/{id}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "studyroomapi",
+          "Ports": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Rooms/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    }
+  ]
+
+}

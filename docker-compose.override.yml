@@ -75,8 +75,8 @@ services:
         volumes:
             - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
             - ${HOME}/.aspnet/https:/root/.aspnet/https/
-    dsapigateway:
-        container_name: dsapigateway
+    ocelotapigateway:
+        container_name: ocelotapigateway
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
         depends_on:
@@ -84,8 +84,9 @@ services:
             - adminuser.api
             - nusers.api
             - booking.api
-        ports:
-            - "7001:80"
         volumes:
             - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
             - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        ports:
+            - "7000:80"
+
