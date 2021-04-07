@@ -52,7 +52,7 @@ namespace AdminUser.API.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(Admin), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateRoom(int id, Admin admin)
+        public async Task<IActionResult> UpdateAdmin(int id, Admin admin)
         {
             if (id != admin.UId)
             {
@@ -66,7 +66,7 @@ namespace AdminUser.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Admin>> CreateRoom(Admin admin)
+        public async Task<ActionResult<Admin>> CreateAdmin(Admin admin)
         {
             await _repository.Create(admin);
 
