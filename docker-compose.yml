@@ -8,6 +8,9 @@ services:
     userData:
         image: mcr.microsoft.com/mssql/server
 
+    bookingData:
+        image: mcr.microsoft.com/mssql/server
+
     studyroom.api:
         image: ${DOCKER_REGISTRY-}studyroomapi
         build:
