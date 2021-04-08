@@ -25,8 +25,8 @@ namespace AdminUser.API.Controllers
 
         // GET: api/Admin
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Admin>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Admin>>> GetAdminUser()
+        [ProducesResponseType(typeof(IEnumerable<UserData>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<UserData>>> GetAdminUser()
         {
             var Admin = await _repository.GetAdminUser();
 
@@ -35,7 +35,7 @@ namespace AdminUser.API.Controllers
 
         // GET: api/Admin/5
         [HttpGet("{id}", Name = "GetAdmin")]
-        public async Task<ActionResult<Admin>> GetAdminUser(int id)
+        public async Task<ActionResult<UserData>> GetAdminUser(int id)
         {
             var admin = await _repository.GetAdminUser(id);
 
@@ -51,8 +51,8 @@ namespace AdminUser.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(Admin), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateAdmin(int id, Admin admin)
+        [ProducesResponseType(typeof(UserData), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> UpdateAdmin(int id, UserData admin)
         {
             if (id != admin.UId)
             {
@@ -66,7 +66,7 @@ namespace AdminUser.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Admin>> CreateAdmin(Admin admin)
+        public async Task<ActionResult<UserData>> CreateAdmin(UserData admin)
         {
             await _repository.Create(admin);
 
@@ -75,8 +75,8 @@ namespace AdminUser.API.Controllers
 
         // DELETE: api/Admin/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(Admin), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Admin>> DeleteAdmin(int id)
+        [ProducesResponseType(typeof(UserData), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UserData>> DeleteAdmin(int id)
         {
             return Ok(await _repository.Delete(id));
         }

@@ -18,19 +18,19 @@ namespace AdminUser.API.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Admin>> GetAdminUser()
+        public async Task<IEnumerable<UserData>> GetAdminUser()
         {
             string query = "EXEC SelAllAdmins;";
-            return await _context.AdminUser.FromSqlRaw(query).ToListAsync();
+            return await _context.userData.FromSqlRaw(query).ToListAsync();
         }
 
-        public Task<Admin> GetAdminUser(int Id)
+        public Task<UserData> GetAdminUser(int Id)
         {
             string query = "EXEC SelAdminById @id=" + Id + "";
-            return Task.FromResult(_context.AdminUser.FromSqlRaw(query).FirstOrDefault());
+            return Task.FromResult(_context.userData.FromSqlRaw(query).FirstOrDefault());
         }
 
-        public async Task Create(Admin admin)
+        public async Task Create(UserData admin)
         {
             int id = admin.UId;
             string f_name = admin.F_name;
@@ -46,7 +46,7 @@ namespace AdminUser.API.Repositories
 
         }
 
-        public async Task<bool> Update(Admin admin)
+        public async Task<bool> Update(UserData admin)
         {
             var res = _context.Database.ExecuteSqlCommand("EXEC UpdUser @UId='" + admin.UId + "',@F_name='" + admin.F_name + "',@L_name='" + admin.L_name + "',@Contact='" + admin.Contact + "',@Address='" + admin.Address + "',@Batch='" + admin.Batch + "',@Degree='" + admin.Degree + "',@Password='" + admin.Password + "',@Type='" + admin.Type + "'");
 

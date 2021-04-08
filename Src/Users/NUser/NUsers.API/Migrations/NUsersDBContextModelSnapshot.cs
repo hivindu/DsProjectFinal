@@ -18,7 +18,7 @@ namespace NUsers.API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("NUsers.API.Entities.Users", b =>
+            modelBuilder.Entity("NUsers.API.Entities.UserData", b =>
                 {
                     b.Property<int>("UId")
                         .ValueGeneratedOnAdd()

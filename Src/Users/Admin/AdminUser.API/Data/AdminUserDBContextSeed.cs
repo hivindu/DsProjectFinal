@@ -18,9 +18,9 @@ namespace AdminUser.API.Data
             {
                 AdminContext.Database.Migrate();
 
-                if (!AdminContext.AdminUser.Any())
+                if (!AdminContext.userData.Any())
                 {
-                    AdminContext.AdminUser.AddRange(GetPreconfiguredAdmin());
+                    AdminContext.userData.AddRange(GetPreconfiguredAdmin());
                     await  AdminContext.SaveChangesAsync();
                 }
             }
@@ -37,10 +37,10 @@ namespace AdminUser.API.Data
                 throw;
             }
         }
-        public static IEnumerable<Admin> GetPreconfiguredAdmin()
+        public static IEnumerable<UserData> GetPreconfiguredAdmin()
         {
-            return new List<Admin> {
-                new Admin(){  }
+            return new List<UserData> {
+                new UserData(){  }
             };
         }
     }

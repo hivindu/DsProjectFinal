@@ -37,10 +37,10 @@ namespace NUsers.API.Data
                 throw;
             }
         }
-        public static IEnumerable<Users> GetPreconfiguredAdmin()
+        public static IEnumerable<UserData> GetPreconfiguredAdmin()
         {
-            return new List<Users> {
-                new Users(){  }
+            return new List<UserData> {
+                new UserData(){  }
             };
         }
     }

@@ -36,8 +36,10 @@ namespace StudyRoom.API
             services.AddTransient<IRoomsRepository,RoomRepository>();
 
             //# Connection string local
-           //var connection = @"Server=127.0.0.1,1435;Database=RoomData;User=sa;Password=Staycool@99;";
-           //services.AddDbContext<StudyRoomDbContext>(options => options.UseSqlServer(connection),ServiceLifetime.Singleton);
+            //var connection = @"Server=127.0.0.1,1435;Database=RoomData;User=sa;Password=Staycool@99;";
+            //services.AddDbContext<StudyRoomDbContext>(options => options.UseSqlServer(connection),ServiceLifetime.Singleton);
+
+            services.AddTransient<IRoomsRepository,RoomRepository>();
 
             services.AddDbContext<StudyRoomDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("StudyRoomDbContext")),ServiceLifetime.Singleton);

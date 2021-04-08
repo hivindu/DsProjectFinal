@@ -7,11 +7,10 @@ namespace AdminUser.API.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AdminUser",
+                name: "UserData",
                 columns: table => new
                 {
-                    UId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UId = table.Column<int>(nullable: false),
                     F_name = table.Column<string>(nullable: true),
                     L_name = table.Column<string>(nullable: true),
                     Contact = table.Column<int>(nullable: false),
@@ -23,14 +22,14 @@ namespace AdminUser.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AdminUser", x => x.UId);
+                    table.PrimaryKey("PK_UserData", x => x.UId);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AdminUser");
+                name: "UserData");
         }
     }
 }

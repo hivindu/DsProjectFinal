@@ -25,8 +25,8 @@ namespace NUsers.API.Controllers
 
         // GET: api/User
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Users>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
+        [ProducesResponseType(typeof(IEnumerable<UserData>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<UserData>>> GetUsers()
         {
             var Users = await _repository.GetUsers();
 
@@ -35,7 +35,7 @@ namespace NUsers.API.Controllers
 
         // GET: api/User/5
         [HttpGet("{id}", Name = "GetUsers")]
-        public async Task<ActionResult<Users>> GetAdminUser(int id)
+        public async Task<ActionResult<UserData>> GetAdminUser(int id)
         {
             var users = await _repository.GetUsers(id);
 
@@ -51,8 +51,8 @@ namespace NUsers.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(Users), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateUser(int id, Users users)
+        [ProducesResponseType(typeof(UserData), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> UpdateUser(int id, UserData users)
         {
             if (id != users.UId)
             {
@@ -66,7 +66,7 @@ namespace NUsers.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Users>> CreateUser(Users users)
+        public async Task<ActionResult<UserData>> CreateUser(UserData users)
         {
             await _repository.Create(users);
 
@@ -75,15 +75,15 @@ namespace NUsers.API.Controllers
 
         // DELETE: api/User/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(Users), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Users>> DeleteUser(int id)
+        [ProducesResponseType(typeof(UserData), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UserData>> DeleteUser(int id)
         {
             return Ok(await _repository.Delete(id));
         }
 
         [HttpGet("[action]/{degree}")]
-        [ProducesResponseType(typeof(IEnumerable<Users>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Users>> GetUserByDegree(string degree)
+        [ProducesResponseType(typeof(IEnumerable<UserData>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UserData>> GetUserByDegree(string degree)
         {
             var users = await _repository.GetUserByDegree(degree);
 
@@ -96,8 +96,8 @@ namespace NUsers.API.Controllers
         }
 
         [HttpGet("[action]/{batch}")]
-        [ProducesResponseType(typeof(IEnumerable<Users>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Users>> GetUserByBatch(string batch)
+        [ProducesResponseType(typeof(IEnumerable<UserData>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UserData>> GetUserByBatch(string batch)
         {
             var users = await _repository.GetUserByBatch(batch);
 

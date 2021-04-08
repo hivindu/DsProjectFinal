@@ -14,6 +14,6 @@ namespace AdminUser.API.Data
         {
         }
 
-        public DbSet<AdminUser.API.Entities.Admin> AdminUser { get; set; }
+        public DbSet<UserData> userData { get; set; }
     }
 }

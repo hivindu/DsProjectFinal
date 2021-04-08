@@ -18,7 +18,7 @@ namespace AdminUser.API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AdminUser.API.Entities.Admin", b =>
+            modelBuilder.Entity("AdminUser.API.Entities.UserData", b =>
                 {
                     b.Property<int>("UId")
                         .ValueGeneratedOnAdd()

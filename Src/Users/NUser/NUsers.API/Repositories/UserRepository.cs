@@ -18,33 +18,33 @@ namespace NUsers.API.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Users>> GetUsers()
+        public async Task<IEnumerable<UserData>> GetUsers()
         {
             string query = "EXEC SelAllUsers;";
             return await _context.Users.FromSqlRaw(query).ToListAsync();
         }
 
-        public Task<Users> GetUsers(int Id)
+        public Task<UserData> GetUsers(int Id)
         {
             string query = "EXEC SelUserById @id=" + Id + "";
             return Task.FromResult(_context.Users.FromSqlRaw(query).FirstOrDefault());
         }
 
-        public async Task<IEnumerable<Users>> GetUserByDegree(string degree )
+        public async Task<IEnumerable<UserData>> GetUserByDegree(string degree )
         {
             //string query = "";
 
             return await _context.Users.FromSqlRaw("EXEC SelUserByDegree @degree =" + degree + "").ToListAsync();
         }
 
-        public async Task<IEnumerable<Users>> GetUserByBatch(string batch)
+        public async Task<IEnumerable<UserData>> GetUserByBatch(string batch)
         {
             //string query = "";
 
             return await _context.Users.FromSqlRaw("EXEC SelUserByBatch @batch =" + batch + "").ToListAsync();
         }
 
-        public async Task Create(Users user)
+        public async Task Create(UserData user)
         {
             int id = user.UId;
             string f_name = user.F_name;
@@ -62,7 +62,7 @@ namespace NUsers.API.Repositories
 
         }
 
-        public async Task<bool> Update(Users user)
+        public async Task<bool> Update(UserData user)
         {
             //string query = "";
 

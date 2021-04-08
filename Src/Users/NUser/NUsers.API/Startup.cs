@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using NUsers.API.Data;
 using Microsoft.OpenApi.Models;
+using NUsers.API.Repositories.Interfaces;
+using NUsers.API.Repositories;
 
 namespace NUsers.API
 {
@@ -32,6 +34,8 @@ namespace NUsers.API
 
             //var connection = @"Server=127.0.0.1,9008;Database=UserData;User=sa;Password=Hanc@1208;";
             //services.AddDbContext<NUsersDBContext>(options => options.UseSqlServer(connection));
+
+            services.AddTransient<IUserRepository,UserRepository>();
 
             services.AddDbContext<NUsersDBContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("NUsersDBContext")), ServiceLifetime.Singleton);

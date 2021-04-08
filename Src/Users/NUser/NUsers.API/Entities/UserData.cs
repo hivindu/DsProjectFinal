@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NUsers.API.Entities
 {
-    public class Users
+    public class UserData
     {
         [Key]
         public int UId { get; set; }

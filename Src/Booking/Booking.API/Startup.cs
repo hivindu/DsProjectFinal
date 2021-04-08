@@ -32,6 +32,8 @@ namespace Booking.API
         {
             services.AddControllers();
 
+            services.AddTransient<IBookingRepository,BookingRepository>();
+
             services.AddDbContext<BookingDBContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BookingDBContext")));
             services.AddTransient<IBookingRepository, BookingRepository>();

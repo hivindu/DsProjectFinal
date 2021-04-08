@@ -8,17 +8,17 @@ namespace NUsers.API.Repositories.Interfaces
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<Users>> GetUsers();
+        Task<IEnumerable<UserData>> GetUsers();
 
-        Task<Users> GetUsers(int Id);
+        Task<UserData> GetUsers(int Id);
 
-        Task<IEnumerable<Users>> GetUserByDegree(string degree);
+        Task<IEnumerable<UserData>> GetUserByDegree(string degree);
 
-        Task<IEnumerable<Users>> GetUserByBatch(string batch);
+        Task<IEnumerable<UserData>> GetUserByBatch(string batch);
 
-        Task Create(Users user);
+        Task Create(UserData user);
 
-        Task<bool> Update(Users user);
+        Task<bool> Update(UserData user);
 
         Task<bool> Delete(int Id);
     }

@@ -8,13 +8,13 @@ namespace AdminUser.API.Repositories.Interface
 {
     public interface IAdminRepository
     {
-        Task<IEnumerable<Admin>> GetAdminUser();
+        Task<IEnumerable<UserData>> GetAdminUser();
 
-        Task<Admin> GetAdminUser(int Id);
+        Task<UserData> GetAdminUser(int Id);
 
-        Task Create(Admin admin);
+        Task Create(UserData admin);
 
-        Task<bool> Update(Admin admin);
+        Task<bool> Update(UserData admin);
 
         Task<bool> Delete(int Id);
     }

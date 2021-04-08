@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdminUser.API.Entities
 {
-    public class Admin
+    public class UserData
     {
         [Key]
         public int UId { get; set; }
