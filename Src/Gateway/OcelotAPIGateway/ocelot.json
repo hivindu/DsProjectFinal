@@ -19,12 +19,148 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "studyroomapi",
-          "Ports": "80"
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/Rooms/{id}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Rooms/GetRoomByOption/{option}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "studyroomapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Rooms/GetRoomByOption/{option}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    // NUser API
+    {
+      "DownstreamPathTemplate": "/api/v1/Users",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Users",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Users/{id}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Users/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Users/GetUserByDegree/{degree}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Users/GetUserByDegree/{degree}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Users/GetUserByBatch/{batch}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Users/GetUserByBatch/{batch}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    //Admin USer API
+    {
+      "DownstreamPathTemplate": "/api/v1/Admin",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Admin",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Admin/{id}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Admin/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    //Booking API
+    {
+      "DownstreamPathTemplate": "/api/v1/Books",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookingapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Books",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Books/{id}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookingapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Books/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Books/GetBookingsByRoom/{SID}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookingapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Books/GetBookingsByRoom/{SID}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Books/GetBookingsByUser/{UID}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookingapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Books/GetBookingsByUser/{UID}",
+      "UpstreamHttpMethod": [ "GET"]
     }
+   
   ]
 
 }
