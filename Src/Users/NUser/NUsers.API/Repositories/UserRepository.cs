@@ -21,27 +21,27 @@ namespace NUsers.API.Repositories
         public async Task<IEnumerable<UserData>> GetUsers()
         {
             string query = "EXEC SelAllUsers;";
-            return await _context.Users.FromSqlRaw(query).ToListAsync();
+            return await _context.userData.FromSqlRaw(query).ToListAsync();
         }
 
         public Task<UserData> GetUsers(int Id)
         {
             string query = "EXEC SelUserById @id=" + Id + "";
-            return Task.FromResult(_context.Users.FromSqlRaw(query).FirstOrDefault());
+            return Task.FromResult(_context.userData.FromSqlRaw(query).FirstOrDefault());
         }
 
         public async Task<IEnumerable<UserData>> GetUserByDegree(string degree )
         {
             //string query = "";
 
-            return await _context.Users.FromSqlRaw("EXEC SelUserByDegree @degree =" + degree + "").ToListAsync();
+            return await _context.userData.FromSqlRaw("EXEC SelUserByDegree @degree =" + degree + "").ToListAsync();
         }
 
         public async Task<IEnumerable<UserData>> GetUserByBatch(string batch)
         {
             //string query = "";
 
-            return await _context.Users.FromSqlRaw("EXEC SelUserByBatch @batch =" + batch + "").ToListAsync();
+            return await _context.userData.FromSqlRaw("EXEC SelUserByBatch @batch =" + batch + "").ToListAsync();
         }
 
         public async Task Create(UserData user)

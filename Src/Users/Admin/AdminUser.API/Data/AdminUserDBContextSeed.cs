@@ -16,7 +16,7 @@ namespace AdminUser.API.Data
 
             try
             {
-                AdminContext.Database.Migrate();
+                //AdminContext.Database.Migrate();
 
                 if (!AdminContext.userData.Any())
                 {

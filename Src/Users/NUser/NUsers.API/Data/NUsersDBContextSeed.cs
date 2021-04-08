@@ -18,9 +18,9 @@ namespace NUsers.API.Data
             {
                 NUsercontext.Database.Migrate();
 
-                if (!NUsercontext.Users.Any())
+                if (!NUsercontext.userData.Any())
                 {
-                    NUsercontext.Users.AddRange(GetPreconfiguredAdmin());
+                    NUsercontext.userData.AddRange(GetPreconfiguredAdmin());
                     await NUsercontext.SaveChangesAsync();
                 }
             }
@@ -40,7 +40,8 @@ namespace NUsers.API.Data
         public static IEnumerable<UserData> GetPreconfiguredAdmin()
         {
             return new List<UserData> {
-                new UserData(){ UId = 005, F_name= "Hivindu", L_name = "Amaradewa", Contact = 0715344131, Address= "Colombo", Batch = "182", Degree = "Software Engineering", Password = "Dasuni", Type = 0 }
+                new UserData(){ UId = 005, F_name= "Hivindu", L_name = "Amaradewa", Contact = 0715344131, Address= "Colombo", Batch = "182", Degree = "Software Engineering", Password = "Dasuni", Type = 0 },
+                new UserData(){ UId = 006, F_name= "Nidula", L_name = "Chithwara", Contact = 0711323563, Address= "Matara", Batch = "", Degree = "", Password = "Nidula", Type = 1 }
 
             };
         }

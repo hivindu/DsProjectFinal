@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NUsers.API.Data;
 
 namespace NUsers.API
 {
@@ -13,7 +15,9 @@ namespace NUsers.API
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            CreateAndSeedDatabase(host);
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -22,5 +26,25 @@ namespace NUsers.API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        private async static void CreateAndSeedDatabase(IHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+
+                try
+                {
+                    var nuserContext = services.GetRequiredService<NUsersDBContext>();
+                    await NUsersDBContextSeed.SeedAsync(nuserContext, loggerFactory);
+                }
+                catch (Exception exception)
+                {
+                    var logger = loggerFactory.CreateLogger<Program>();
+                    logger.LogError(exception.Message);
+                }
+            }
+        }
     }
 }

@@ -14,6 +14,6 @@ namespace NUsers.API.Data
         {
         }
 
-        public DbSet<NUsers.API.Entities.UserData> Users { get; set; }
+        public DbSet<UserData> userData { get; set; }
     }
 }
