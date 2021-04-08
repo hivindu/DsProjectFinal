@@ -40,7 +40,8 @@ namespace NUsers.API.Data
         public static IEnumerable<UserData> GetPreconfiguredAdmin()
         {
             return new List<UserData> {
-                new UserData(){  }
+                new UserData(){ UId = 005, F_name= "Hivindu", L_name = "Amaradewa", Contact = 0715344131, Address= "Colombo", Batch = "182", Degree = "Software Engineering", Password = "Dasuni", Type = 0 }
+
             };
         }
     }
