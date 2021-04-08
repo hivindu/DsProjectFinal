@@ -54,7 +54,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "ConnectionStrings:NUserDBContext=Server=userData;Database=UserData;User Id=SA;Password=Hanc@1208;"
+            - "ConnectionStrings:NUsersDBContext=Server=userData;Database=UserData;User Id=SA;Password=Hanc@1208;"
         depends_on:
             - userData
         ports:
