@@ -30,7 +30,7 @@ namespace NUsers.API
         {
             services.AddControllers();
 
-            var connection = @"Server=127.0.0.1,9004;Database=UserData;User=sa;Password=Hanc@1208;";
+            var connection = @"Server=127.0.0.1,9008;Database=UserData;User=sa;Password=Hanc@1208;";
 
             services.AddDbContext<NUsersDBContext>(options => options.UseSqlServer(connection));
 

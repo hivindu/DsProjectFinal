@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,8 +34,11 @@ namespace AdminUser.API
 
             services.AddTransient<IAdminRepository, AdminRepository>();
 
-            var connection = @"Server=127.0.0.1,9004;Database=UsersData;User=sa;Password=Hanc@1208;";
-            services.AddDbContext<AdminUserDBContext>(options => options.UseSqlServer(connection),ServiceLifetime.Singleton);
+           // var connection = @"Server=127.0.0.1,9008;Database=UsersData;User=sa;Password=Hanc@1208;";
+            //services.AddDbContext<AdminUserDBContext>(options => options.UseSqlServer(connection),ServiceLifetime.Singleton);
+
+            services.AddDbContext<AdminUserDBContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("AdminUserDBContext")), ServiceLifetime.Singleton);
 
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Admin User API", Version = "v1" });
