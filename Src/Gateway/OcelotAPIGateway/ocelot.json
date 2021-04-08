@@ -7,7 +7,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "studyroomapi",
-          "Ports": "80"
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/Rooms",

@@ -28,7 +28,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "ConnectionStrings:StudyRoomDbContext=Server=roomData;Database=RoomData;User Id=sa;Password=Staycool@99;"
+            - "ConnectionStrings:StudyRoomDbContext=Server=roomData;Database=RoomData;User Id=SA;Password=Staycool@99;"
         depends_on:
             - roomData
         volumes:
@@ -41,7 +41,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "ConnectionStrings:AdminUserDBContext=Server=userData;Database=UserData;User Id=sa;Password=Hanc@1208;"
+            - "ConnectionStrings:AdminUserDBContext=Server=userData;Database=UserData;User Id=SA;Password=Hanc@1208;"
         depends_on:
             - userData
         ports:
@@ -54,7 +54,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "ConnectionStrings:NUserDBContext=Server=userData;Database=UserData;User Id=sa;Password=Hanc@1208;"
+            - "ConnectionStrings:NUserDBContext=Server=userData;Database=UserData;User Id=SA;Password=Hanc@1208;"
         depends_on:
             - userData
         ports:
@@ -67,7 +67,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "ConnectionStrings:BookingDBContext=Server=bookingData;Database=BookingData;User Id=sa;Password=Staycool@99;"
+            - "ConnectionStrings:BookingDBContext=Server=bookingData;Database=BookingData;User Id=SA;Password=Staycool@99;"
         depends_on:
             - bookingData
         ports:
