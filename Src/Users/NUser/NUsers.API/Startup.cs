@@ -30,9 +30,11 @@ namespace NUsers.API
         {
             services.AddControllers();
 
-            var connection = @"Server=127.0.0.1,9008;Database=UserData;User=sa;Password=Hanc@1208;";
+            //var connection = @"Server=127.0.0.1,9008;Database=UserData;User=sa;Password=Hanc@1208;";
+            //services.AddDbContext<NUsersDBContext>(options => options.UseSqlServer(connection));
 
-            services.AddDbContext<NUsersDBContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<NUsersDBContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("NUsersDBContext")), ServiceLifetime.Singleton);
 
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Normal User API", Version = "v1" });
