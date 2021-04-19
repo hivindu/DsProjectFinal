@@ -44,6 +44,12 @@ namespace NUsers.API.Repositories
             return await _context.userData.FromSqlRaw("EXEC SelUserByBatch @batch =" + batch + "").ToListAsync();
         }
 
+        public Task<UserData> GetUserByCredentials(int id, string password)
+        {
+            string query = "EXEC SelUserByCredentials @ID=" + id + ",@PW=" + password + "";
+            return Task.FromResult(_context.userData.FromSqlRaw(query).FirstOrDefault());
+        }
+
         public async Task Create(UserData user)
         {
             int id = user.UId;

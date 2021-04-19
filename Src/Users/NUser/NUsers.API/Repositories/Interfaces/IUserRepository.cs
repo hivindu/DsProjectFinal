@@ -16,6 +16,8 @@ namespace NUsers.API.Repositories.Interfaces
 
         Task<IEnumerable<UserData>> GetUserByBatch(string batch);
 
+        Task<UserData> GetUserByCredentials(int id, string password);
+
         Task Create(UserData user);
 
         Task<bool> Update(UserData user);
