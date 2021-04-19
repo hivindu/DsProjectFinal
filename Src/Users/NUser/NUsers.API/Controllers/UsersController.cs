@@ -47,7 +47,7 @@ namespace NUsers.API.Controllers
             return users;
         }
 
-        [HttpGet("[action]/{id}/{pw}", Name = "GetAdmin")]
+        [HttpGet("[action]/{id}/{pw}")]
         public async Task<ActionResult<UserData>> GetUserByCredentials(int id, string pw)
         {
             var admin = await _repository.GetUserByCredentials(id, pw);
