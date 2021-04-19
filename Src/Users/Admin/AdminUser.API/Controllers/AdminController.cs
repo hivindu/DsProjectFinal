@@ -47,6 +47,19 @@ namespace AdminUser.API.Controllers
             return admin;
         }
 
+        [HttpGet("[action]/{id}/{pw}", Name = "GetAdmin")]
+        public async Task<ActionResult<UserData>> GetUserByCredentials(int id,string pw)
+        {
+            var admin = await _repository.GetUserByCredentials(id,pw);
+
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            return admin;
+        }
+
         // PUT: api/Admin/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

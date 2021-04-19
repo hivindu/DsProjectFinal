@@ -30,6 +30,12 @@ namespace AdminUser.API.Repositories
             return Task.FromResult(_context.userData.FromSqlRaw(query).FirstOrDefault());
         }
 
+        public Task<UserData> GetUserByCredentials(int id, string password)
+        {
+            string query = "EXEC SelUserByCredentials @ID=" + id + ",@PW="+ password+"";
+            return Task.FromResult(_context.userData.FromSqlRaw(query).FirstOrDefault()); 
+        }
+
         public async Task Create(UserData admin)
         {
             int id = admin.UId;
@@ -61,5 +67,7 @@ namespace AdminUser.API.Repositories
 
             return Convert.ToBoolean(res);
         }
+
+       
     }
 }

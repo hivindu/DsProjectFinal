@@ -12,6 +12,8 @@ namespace AdminUser.API.Repositories.Interface
 
         Task<UserData> GetAdminUser(int Id);
 
+        Task<UserData> GetUserByCredentials(int id, string password);
+
         Task Create(UserData admin);
 
         Task<bool> Update(UserData admin);
