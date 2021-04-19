@@ -111,6 +111,18 @@
       "UpstreamPathTemplate": "/Admin/{id}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
+    {
+      "DownstreamPathTemplate": "/api/v1/Admin/GetUserByCredentials/{id}/{pw}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminuserapi",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Admin/GetUserByCredentials/{id}/{pw}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
     //Booking API
     {
       "DownstreamPathTemplate": "/api/v1/Books",
@@ -158,9 +170,9 @@
         }
       ],
       "UpstreamPathTemplate": "/Books/GetBookingsByUser/{UID}",
-      "UpstreamHttpMethod": [ "GET"]
+      "UpstreamHttpMethod": [ "GET" ]
     }
-   
+
   ]
 
 }
