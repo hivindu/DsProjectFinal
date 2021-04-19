@@ -30,10 +30,10 @@ namespace AdminUser.API.Repositories
             return Task.FromResult(_context.userData.FromSqlRaw(query).FirstOrDefault());
         }
 
-        public Task<UserData> GetUserByCredentials(int id, string password)
+        public async Task<IEnumerable<UserData>> GetUserByCredentials(int id, string password)
         {
             string query = "EXEC SelUserByCredentials @ID=" + id + ",@PW="+ password+"";
-            return Task.FromResult(_context.userData.FromSqlRaw(query).FirstOrDefault()); 
+            return await _context.userData.FromSqlRaw(query).ToListAsync(); 
         }
 
         public async Task Create(UserData admin)

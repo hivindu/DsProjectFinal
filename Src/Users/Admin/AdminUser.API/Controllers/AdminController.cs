@@ -48,7 +48,8 @@ namespace AdminUser.API.Controllers
         }
 
         [HttpGet("[action]/{id}/{pw}")]
-        public async Task<ActionResult<UserData>> GetUserByCredentials(int id,string pw)
+        [ProducesResponseType(typeof(IEnumerable<UserData>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<UserData>>> GetUserByCredentials(int id,string pw)
         {
             var admin = await _repository.GetUserByCredentials(id,pw);
 
@@ -57,7 +58,7 @@ namespace AdminUser.API.Controllers
                 return NotFound();
             }
 
-            return admin;
+            return Ok(admin); 
         }
 
         // PUT: api/Admin/5
