@@ -24,16 +24,16 @@ namespace AdminUser.API.Repositories
             return await _context.userData.FromSqlRaw(query).ToListAsync();
         }
 
-        public Task<UserData> GetAdminUser(int Id)
+        public async Task<IEnumerable<UserData>> GetAdminUser(int Id)
         {
             string query = "EXEC SelAdminById @id=" + Id + "";
-            return Task.FromResult(_context.userData.FromSqlRaw(query).FirstOrDefault());
+            return _context.userData.FromSqlRaw(query).AsEnumerable();
         }
 
         public async Task<IEnumerable<UserData>> GetUserByCredentials(int id, string password)
         {
             string query = "EXEC SelUserByCredentials @ID=" + id + ",@PW="+ password+"";
-            return await _context.userData.FromSqlRaw(query).ToListAsync(); 
+            return  _context.userData.FromSqlRaw(query).AsEnumerable(); 
         }
 
         public async Task Create(UserData admin)

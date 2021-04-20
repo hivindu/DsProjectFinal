@@ -35,7 +35,8 @@ namespace AdminUser.API.Controllers
 
         // GET: api/Admin/5
         [HttpGet("{id}", Name = "GetAdmin")]
-        public async Task<ActionResult<UserData>> GetAdminUser(int id)
+        [ProducesResponseType(typeof(IEnumerable<UserData>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<UserData>>> GetAdminUser(int id)
         {
             var admin = await _repository.GetAdminUser(id);
 
@@ -44,12 +45,12 @@ namespace AdminUser.API.Controllers
                 return NotFound();
             }
 
-            return admin;
+            return Ok(admin);
         }
 
         [HttpGet("[action]/{id}/{pw}")]
-        [ProducesResponseType(typeof(IEnumerable<UserData>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<UserData>>> GetUserByCredentials(int id,string pw)
+        [ProducesResponseType(typeof(ActionResult<UserData>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UserData>> GetUserByCredentials(int id,string pw)
         {
             var admin = await _repository.GetUserByCredentials(id,pw);
 
@@ -61,9 +62,7 @@ namespace AdminUser.API.Controllers
             return Ok(admin); 
         }
 
-        // PUT: api/Admin/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(UserData), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> UpdateAdmin(int id, UserData admin)

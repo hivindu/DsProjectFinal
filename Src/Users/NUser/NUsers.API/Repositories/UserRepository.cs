@@ -24,10 +24,10 @@ namespace NUsers.API.Repositories
             return await _context.userData.FromSqlRaw(query).ToListAsync();
         }
 
-        public Task<UserData> GetUsers(int Id)
+        public async Task<IEnumerable<UserData>> GetUsers(int Id)
         {
             string query = "EXEC SelUserById @id=" + Id + "";
-            return Task.FromResult(_context.userData.FromSqlRaw(query).FirstOrDefault());
+            return _context.userData.FromSqlRaw(query).AsEnumerable();
         }
 
         public async Task<IEnumerable<UserData>> GetUserByDegree(string degree )
@@ -44,10 +44,10 @@ namespace NUsers.API.Repositories
             return await _context.userData.FromSqlRaw("EXEC SelUserByBatch @batch =" + batch + "").ToListAsync();
         }
 
-        public Task<UserData> GetUserByCredentials(int id, string password)
+        public async Task<IEnumerable<UserData>> GetUserByCredentials(int id, string password)
         {
             string query = "EXEC SelUserByCredentials @ID=" + id + ",@PW=" + password + "";
-            return Task.FromResult(_context.userData.FromSqlRaw(query).FirstOrDefault());
+            return _context.userData.FromSqlRaw(query).AsEnumerable();
         }
 
         public async Task Create(UserData user)

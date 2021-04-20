@@ -10,13 +10,13 @@ namespace NUsers.API.Repositories.Interfaces
     {
         Task<IEnumerable<UserData>> GetUsers();
 
-        Task<UserData> GetUsers(int Id);
+        Task<IEnumerable<UserData>> GetUsers(int Id);
 
         Task<IEnumerable<UserData>> GetUserByDegree(string degree);
 
         Task<IEnumerable<UserData>> GetUserByBatch(string batch);
 
-        Task<UserData> GetUserByCredentials(int id, string password);
+        Task<IEnumerable<UserData>> GetUserByCredentials(int id, string password);
 
         Task Create(UserData user);
 

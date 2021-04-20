@@ -10,7 +10,7 @@ namespace AdminUser.API.Repositories.Interface
     {
         Task<IEnumerable<UserData>> GetAdminUser();
 
-        Task<UserData> GetAdminUser(int Id);
+        Task<IEnumerable<UserData>> GetAdminUser(int Id);
 
         Task<IEnumerable<UserData>> GetUserByCredentials(int id, string password);
 

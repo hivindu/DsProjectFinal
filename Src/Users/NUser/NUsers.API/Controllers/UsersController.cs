@@ -35,7 +35,8 @@ namespace NUsers.API.Controllers
 
         // GET: api/User/5
         [HttpGet("{id}", Name = "GetUsers")]
-        public async Task<ActionResult<UserData>> GetAdminUser(int id)
+        [ProducesResponseType(typeof(IEnumerable<UserData>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<UserData>>> GetAdminUser(int id)
         {
             var users = await _repository.GetUsers(id);
 
@@ -44,20 +45,21 @@ namespace NUsers.API.Controllers
                 return NotFound();
             }
 
-            return users;
+            return Ok(users);
         }
 
         [HttpGet("[action]/{id}/{pw}")]
-        public async Task<ActionResult<UserData>> GetUserByCredentials(int id, string pw)
+        [ProducesResponseType(typeof(IEnumerable<UserData>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<UserData>>> GetUserByCredentials(int id, string pw)
         {
-            var admin = await _repository.GetUserByCredentials(id, pw);
+            var users = await _repository.GetUserByCredentials(id, pw);
 
-            if (admin == null)
+            if (users == null)
             {
                 return NotFound();
             }
 
-            return admin;
+            return Ok(users); 
         }
 
         // PUT: api/User/5
