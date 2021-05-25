@@ -56,10 +56,7 @@ namespace StudyRoom.API.Repository
 
         public async Task<bool> Update(Rooms room)
         {
-           // string query = "EXEC UpdRoom @SId="+room.SId+ ",@Floor="+room.Floor+ ",@Capacity="+room.Capacity+ ",@location="+room.Location+ ",@type="+room.Options+"";
-
             var res = _context.Database.ExecuteSqlCommand("EXEC UpdRoom @SId='" + room.SId + "',@Floor='" + room.Floor + "',@Capacity='" + room.Capacity + "',@location='" + room.Location + "',@Options='" + room.Options + "'");
-
             return Convert.ToBoolean(res);
         }
 
