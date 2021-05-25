@@ -28,7 +28,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "ConnectionStrings:StudyRoomDbContext=Server=roomData;Database=RoomData;User Id=SA;Password=Staycool@99;"
+            - "Data Source=SQL5068.site4now.net;Initial Catalog=db_a74fe9_teamdragon;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
         depends_on:
             - roomData
         volumes:
@@ -41,7 +41,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "ConnectionStrings:AdminUserDBContext=Server=userData;Database=UserData;User Id=SA;Password=Hanc@1208;"
+            - "Data Source=SQL5068.site4now.net;Initial Catalog=db_a74fe9_teamdragon;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
         depends_on:
             - userData
         ports:
@@ -54,7 +54,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "ConnectionStrings:NUsersDBContext=Server=userData;Database=UserData;User Id=SA;Password=Hanc@1208;"
+            - "Data Source=SQL5068.site4now.net;Initial Catalog=db_a74fe9_teamdragon;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
         depends_on:
             - userData
         ports:
@@ -67,7 +67,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "ConnectionStrings:BookingDBContext=Server=bookingData;Database=BookingData;User Id=SA;Password=Staycool@99;"
+            - "Data Source=SQL5068.site4now.net;Initial Catalog=db_a74fe9_teamdragon;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
         depends_on:
             - bookingData
         ports:
