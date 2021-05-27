@@ -28,7 +28,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "Data Source=SQL5068.site4now.net;Initial Catalog=db_a74fe9_teamdragon;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
+            - "Provider=SQLOLEDB;Data Source=SQL5068.site4now.net;Initial Catalog=;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
         depends_on:
             - roomData
         volumes:
@@ -41,7 +41,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "Data Source=SQL5068.site4now.net;Initial Catalog=db_a74fe9_teamdragon;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
+            - "Provider=SQLOLEDB;Data Source=SQL5068.site4now.net;Initial Catalog=;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
         depends_on:
             - userData
         ports:
@@ -54,7 +54,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "Data Source=SQL5068.site4now.net;Initial Catalog=db_a74fe9_teamdragon;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
+            - "Provider=SQLOLEDB;Data Source=SQL5068.site4now.net;Initial Catalog=;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
         depends_on:
             - userData
         ports:
@@ -67,7 +67,7 @@ services:
         restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "Data Source=SQL5068.site4now.net;Initial Catalog=db_a74fe9_teamdragon;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
+            - "Provider=SQLOLEDB;Data Source=SQL5068.site4now.net;Initial Catalog=;User Id=db_a74fe9_teamdragon_admin;Password=Team99Dragon"
         depends_on:
             - bookingData
         ports:

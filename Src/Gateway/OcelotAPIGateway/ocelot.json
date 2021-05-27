@@ -6,7 +6,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "studyroomapi",
+          "Host": "hivi-99-studyroomapi-kghrj.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -18,7 +18,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "studyroomapi",
+          "Host": "hivi-99-studyroomapi-kghrj.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -30,7 +30,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "studyroomapi",
+          "Host": "hivi-99-studyroomapi-kghrj.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -43,7 +43,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "nuserapi",
+          "Host": "hivi-99-nusersapi-yzu46.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -55,7 +55,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "nuserapi",
+          "Host": "hivi-99-nusersapi-yzu46.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -67,7 +67,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "nuserapi",
+          "Host": "hivi-99-nusersapi-yzu46.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -79,7 +79,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "nuserapi",
+          "Host": "hivi-99-nusersapi-yzu46.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -91,7 +91,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "nuserapi",
+          "Host": "hivi-99-nusersapi-yzu46.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -104,7 +104,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "adminuserapi",
+          "Host": "hivi-99-adminuserapi-shxti.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -116,7 +116,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "adminuserapi",
+          "Host": "hivi-99-adminuserapi-shxti.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -128,7 +128,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "adminuserapi",
+          "Host": "hivi-99-adminuserapi-shxti.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -141,7 +141,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "bookingapi",
+          "Host": "hivi-99-bookingapi-sdqti.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -153,7 +153,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "bookingapi",
+          "Host": "hivi-99-bookingapi-sdqti.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -165,7 +165,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "bookingapi",
+          "Host": "hivi-99-bookingapi-sdqti.ondigitalocean.app",
           "Port": "80"
         }
       ],
@@ -177,7 +177,7 @@
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "bookingapi",
+          "Host": "hivi-99-bookingapi-sdqti.ondigitalocean.app",
           "Port": "80"
         }
       ],

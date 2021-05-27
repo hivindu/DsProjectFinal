@@ -16,7 +16,7 @@ namespace NUsers.API.Data
 
             try
             {
-                NUsercontext.Database.Migrate();
+               // NUsercontext.Database.Migrate();
 
                 if (!NUsercontext.userData.Any())
                 {
