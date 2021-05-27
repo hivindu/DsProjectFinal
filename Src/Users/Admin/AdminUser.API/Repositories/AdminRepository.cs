@@ -48,20 +48,20 @@ namespace AdminUser.API.Repositories
             string password = admin.Password;
             int type = admin.Type;
 
-            var rest = _context.Database.ExecuteSqlCommand("EXEC InsAdmin @UId='" + id + "', @F_name='" + f_name + "',@L_name='" + l_name + "',@Contact='" + contact + "',@Address='" + address + "' ,@Batch = '" + batch + "', @Degree = '" + degree + "', @Password = '" + password + "', @Type = '" + type + "'");
+            var rest = _context.Database.ExecuteSqlCommand("EXEC InsAdmin @UId='" + id + "', @F_name='" + f_name + "',@L_name='" + l_name + "',@Contact='" + contact + "',@Address='" + address + "' , @Password = '" + password + "', @Type = '" + type + "'");
 
         }
 
         public async Task<bool> Update(UserData admin)
         {
-            var res = _context.Database.ExecuteSqlCommand("EXEC UpdUser @UId='" + admin.UId + "',@F_name='" + admin.F_name + "',@L_name='" + admin.L_name + "',@Contact='" + admin.Contact + "',@Address='" + admin.Address + "',@Batch='" + admin.Batch + "',@Degree='" + admin.Degree + "',@Password='" + admin.Password + "',@Type='" + admin.Type + "'");
+            var res = _context.Database.ExecuteSqlCommand("EXEC UpdUser @UId='" + admin.UId + "',@F_name='" + admin.F_name + "',@L_name='" + admin.L_name + "',@Contact='" + admin.Contact + "',@Address='" + admin.Address + "',@Password='" + admin.Password + "',@Type='" + admin.Type + "'");
 
             return Convert.ToBoolean(res);
         }
 
         public async Task<bool> Delete(int id)
         {
-            string query = "EXEC DelAdmin @Uid=" + id + "";
+            string query = "EXEC DelUser @Uid=" + id + "";
 
             var res = _context.Database.ExecuteSqlCommand("EXEC DelUser @Uid='" + id + "'");
 

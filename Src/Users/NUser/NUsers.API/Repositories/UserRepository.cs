@@ -72,7 +72,7 @@ namespace NUsers.API.Repositories
         {
             //string query = "";
 
-            var res = _context.Database.ExecuteSqlCommand("EXEC UpdUser @UId='" + user.UId + "',@F_name='" + user.F_name + "',@L_name='" + user.L_name + "',@Contact='" + user.Contact + "',@Address='" + user.Address + "',@Batch='" + user.Batch + "',@Degree='" + user.Degree + "',@Password='" + user.Password + "',@Type='" + user.Type + "'");
+            var res = _context.Database.ExecuteSqlCommand("EXEC UpdUserN @UId='" + user.UId + "',@F_name='" + user.F_name + "',@L_name='" + user.L_name + "',@Contact='" + user.Contact + "',@Address='" + user.Address + "',@Batch='" + user.Batch + "',@Degree='" + user.Degree + "',@Password='" + user.Password + "',@Type='" + user.Type + "'");
 
 
             return Convert.ToBoolean(res);
