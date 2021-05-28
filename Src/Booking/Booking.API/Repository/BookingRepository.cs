@@ -52,21 +52,21 @@ namespace Booking.API.Repository
             int uid = reservation.UserId;
             int sid = reservation.SID;
             string purpose = reservation.Purpose;
-            var rest = _context.Database.ExecuteSqlCommand("EXEC InsBooking  @count ='" + StudentCount + "', @ftime='" + FDate + "',@ttime='" + TDate + "',@rdate='" + rdate + "',@uid='" + uid + "',@sid='"+ sid + "',@purpose='"+ purpose + "'");
+            var rest = _context.Database.ExecuteSqlCommand("EXEC InsBooking  @count =" + StudentCount + ", @ftime=" + FDate + ",@ttime=" + TDate + ",@rdate=" + rdate + ",@uid=" + uid + ",@sid="+ sid + ",@purpose='"+ purpose + "'");
 
         }
 
         public async Task<bool> Update(Book reservation)
         {
             
-            var res = _context.Database.ExecuteSqlCommand("EXEC UpdBook @bid='" + reservation.BId + "',@Count='" + reservation.StudentCount + "',@Ftime='" + reservation.FromTime + "',@Ttime='" + reservation.ToTime + "',@Date='" + reservation.ReservationDate + "',@Uid='"+reservation.UserId+ "',@Sid='"+reservation.SID+ "',@Purpose='"+reservation.Purpose+"'");
+            var res = _context.Database.ExecuteSqlCommand("EXEC UpdBook @bid=" + reservation.BId + ",@Count=" + reservation.StudentCount + ",@Ftime=" + reservation.FromTime + ",@Ttime=" + reservation.ToTime + ",@Date=" + reservation.ReservationDate + ",@Uid="+reservation.UserId+ ",@Sid="+reservation.SID+ ",@Purpose='"+reservation.Purpose+"'");
 
             return Convert.ToBoolean(res);
         }
 
         public async Task<bool> Delete(int Id)
         {
-            var res = _context.Database.ExecuteSqlCommand("EXEC DelBooking @sid='" + Id + "'");
+            var res = _context.Database.ExecuteSqlCommand("EXEC DelBooking @sid=" + Id + "");
 
             return Convert.ToBoolean(res);
         }

@@ -49,14 +49,14 @@ namespace StudyRoom.API.Repository
             string location = room.Location;
             int option = room.Options;
 
-            var rest = _context.Database.ExecuteSqlCommand("EXEC InsStudyRoom @SId='"+id+"', @Floor='"+floor+"',@Capacity='"+capacity+"',@location='"+capacity+"',@type='"+option+"'");
+            var rest = _context.Database.ExecuteSqlCommand("EXEC InsStudyRoom @SId="+id+", @Floor="+floor+",@Capacity="+capacity+",@location='"+ location + "',@type="+option+"");
             //var res = _context.Database.ExecuteSqlRaw("EXEC InsStudyRoom @SId, @Floor,@Capacity,@location,@type", parameters:new[] {""+ids+"",""+floor+""+capacity+"",""+location+"",""+option+""});
             
         }
 
         public async Task<bool> Update(Rooms room)
         {
-            var res = _context.Database.ExecuteSqlCommand("EXEC UpdRoom @SId='" + room.SId + "',@Floor='" + room.Floor + "',@Capacity='" + room.Capacity + "',@location='" + room.Location + "',@Options='" + room.Options + "'");
+            var res = _context.Database.ExecuteSqlCommand("EXEC UpdRoom @SId=" + room.SId + ",@Floor=" + room.Floor + ",@Capacity=" + room.Capacity + ",@location='" + room.Location + "',@Options=" + room.Options + "");
             return Convert.ToBoolean(res);
         }
 
