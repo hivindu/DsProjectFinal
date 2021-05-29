@@ -183,6 +183,18 @@
       ],
       "UpstreamPathTemplate": "/Books/GetBookingsByUser/{UID}",
       "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Books/GetBookingsByTime/{fTime}/{tTime}/{date}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hivi-99-bookingapi-sdqti.ondigitalocean.app",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Books/GetBookingsByTime/{fTime}/{tTime}/{date}",
+      "UpstreamHttpMethod": [ "GET" ]
     }
 
   ]
