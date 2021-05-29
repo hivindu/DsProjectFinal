@@ -62,6 +62,20 @@ namespace Booking.API.Controllers
             return Ok(bookings);
         }
 
+        [HttpGet("[action]/{fTime}/{tTime}/{date}")]
+        [ProducesResponseType(typeof(IEnumerable<Book>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Book>>> GetBookingsByTime(DateTime fTime,DateTime tTime,DateTime date)
+        {
+            var bookings = await _repository.GetBookingByTime(fTime, tTime, date);
+
+            if (bookings == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(bookings);
+        }
+
         [HttpGet("[action]/{UID}")]
         [ProducesResponseType(typeof(IEnumerable<Book>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Book>>> GetBookingsByUser(int UID)

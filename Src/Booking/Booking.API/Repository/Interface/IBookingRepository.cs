@@ -17,6 +17,8 @@ namespace Booking.API.Repository.Interface
 
         Task<IEnumerable<Book>> GetBookingByRoom(int SId);
 
+        Task<IEnumerable<Book>> GetBookingByTime(DateTime ftime, DateTime toTime, DateTime date);
+
         Task Create(Book reservation);
 
         Task<bool> Update(Book reservation);
