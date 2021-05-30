@@ -14,6 +14,8 @@ namespace StudyRoom.API.Repository.Interface
 
         Task<IEnumerable<Rooms>> GetRoomByOption(int option);
 
+        Task<IEnumerable<Rooms>> GetBookingByTime(DateTime ftime, DateTime toTime, DateTime date);
+
         Task Create(Rooms room);
 
         Task<bool> Update(Rooms room);

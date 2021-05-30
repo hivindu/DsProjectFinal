@@ -43,13 +43,6 @@ namespace Booking.API.Repository
             return await _context.Book.FromSqlRaw(query).ToListAsync();
         }
 
-
-        public async Task<IEnumerable<Book>> GetBookingByTime(DateTime ftime, DateTime toTime, DateTime date)
-        {
-            string query = "EXEC SelAllBookingsByTime @fTime=" + ftime + ", @tTime="+toTime+ ",@rdate ="+date+"";
-            return await _context.Book.FromSqlRaw(query).ToListAsync();
-        }
-
         public async Task Create(Book reservation)
         {
             DateTime FDate = reservation.FromTime;

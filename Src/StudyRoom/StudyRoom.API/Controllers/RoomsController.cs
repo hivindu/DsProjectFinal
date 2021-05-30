@@ -60,6 +60,21 @@ namespace StudyRoom.API.Controllers
         }
 
 
+        [HttpGet("[action]/{fTime}/{tTime}/{date}")]
+        [ProducesResponseType(typeof(IEnumerable<Rooms>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Rooms>>> GetBookingsByTime(DateTime fTime, DateTime tTime, DateTime date)
+        {
+            var bookings = await _repository.GetBookingByTime(fTime, tTime, date);
+
+            if (bookings == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(bookings);
+        }
+
+
         // POST: api/Rooms
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

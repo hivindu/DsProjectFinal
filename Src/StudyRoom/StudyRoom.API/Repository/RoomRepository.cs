@@ -38,7 +38,15 @@ namespace StudyRoom.API.Repository
             return await _context.Rooms.FromSqlRaw("EXEC SelRoomByOption @option =" + option + "").ToListAsync();
         }
 
-        
+
+        public async Task<IEnumerable<Rooms>> GetBookingByTime(DateTime ftime, DateTime toTime, DateTime date)
+        {
+            string query = "EXEC SelAllBookingsByTime @fTime='" + ftime + "', @tTime='" + toTime + "',@rdate ='" + date + "'";
+            return await _context.Rooms.FromSqlRaw(query).ToListAsync();
+        }
+
+
+
         public async Task Create(Rooms room)
         {
             // string query = "EXEC InsStudyRoom @SId="+room.SId+ ",@Floor="+room.Floor+ ",@Capacity="+room.Capacity+ ",@location="+room.Location+ ",@type="+room.Options+"";

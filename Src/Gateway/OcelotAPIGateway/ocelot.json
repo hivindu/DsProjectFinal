@@ -37,6 +37,18 @@
       "UpstreamPathTemplate": "/Rooms/GetRoomByOption/{option}",
       "UpstreamHttpMethod": [ "GET" ]
     },
+    {
+      "DownstreamPathTemplate": "/api/v1/Rooms/GetBookingsByTime/{fTime}/{tTime}/{date}",
+      "DownstreamPathScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hivi-99-studyroomapi-kghrj.ondigitalocean.app",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Rooms/GetBookingsByTime/{fTime}/{tTime}/{date}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
     // NUser API
     {
       "DownstreamPathTemplate": "/api/v1/Users",
@@ -182,18 +194,6 @@
         }
       ],
       "UpstreamPathTemplate": "/Books/GetBookingsByUser/{UID}",
-      "UpstreamHttpMethod": [ "GET" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/v1/Books/GetBookingsByTime/{fTime}/{tTime}/{date}",
-      "DownstreamPathScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "hivi-99-bookingapi-sdqti.ondigitalocean.app",
-          "Port": "80"
-        }
-      ],
-      "UpstreamPathTemplate": "/Books/GetBookingsByTime/{fTime}/{tTime}/{date}",
       "UpstreamHttpMethod": [ "GET" ]
     }
 
