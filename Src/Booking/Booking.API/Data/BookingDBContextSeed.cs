@@ -40,9 +40,9 @@ namespace Booking.API.Data
 
         public static IEnumerable<Book> GetPreconfiguredBookings()
         {
-
+            string dt = Convert.ToString(DateTime.Now.Date);
             return new List<Book> {
-                new Book(){ FromTime = DateTime.Now, ToTime = DateTime.Now.AddMinutes(30), ReservationDate= DateTime.Now.Date, StudentCount=6, SID=6, Purpose="DS Corsework", UserId=10026948 }
+                new Book(){ ReservationDate= dt, StudentCount=6, SID=6, Purpose="DS Corsework", UserId=10026948,Slot = 0 }
             };
         }
     }

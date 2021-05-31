@@ -37,29 +37,28 @@ namespace Booking.API.Repository
             return await _context.Book.FromSqlRaw(query).ToListAsync();
         }
 
-        public async Task<IEnumerable<Book>> GetBookingByUser(int UId)
+        public async Task<IEnumerable<Book>> GetBookingByUser(int UId )
         {
-            string query = "EXEC SelAllBookingsByUser @id=" + UId + "";
+            string query = "EXEC SelAllBookingsByUserId @id=" + UId + "";
             return await _context.Book.FromSqlRaw(query).ToListAsync();
         }
 
         public async Task Create(Book reservation)
         {
-            DateTime FDate = reservation.FromTime;
-            DateTime TDate = reservation.ReservationDate;
+            string TDate = reservation.ReservationDate;
             int StudentCount = reservation.StudentCount;
-            DateTime rdate = reservation.ReservationDate;
             int uid = reservation.UserId;
             int sid = reservation.SID;
             string purpose = reservation.Purpose;
-            var rest = _context.Database.ExecuteSqlCommand("EXEC InsBooking  @count =" + StudentCount + ", @ftime='" + FDate + "',@ttime='" + TDate + "',@rdate='" + rdate + "',@uid=" + uid + ",@sid="+ sid + ",@purpose='"+ purpose + "'");
+            int slot = reservation.Slot;
+            var rest = _context.Database.ExecuteSqlCommand("EXEC InsBooking  @count =" + StudentCount + ",@rdate='" + TDate + "',@uid=" + uid + ",@sid="+ sid + ",@purpose='"+ purpose + "',@slot="+slot+"");
 
         }
 
         public async Task<bool> Update(Book reservation)
         {
             
-            var res = _context.Database.ExecuteSqlCommand("EXEC UpdBook @bid=" + reservation.BId + ",@Count=" + reservation.StudentCount + ",@Ftime=" + reservation.FromTime + ",@Ttime=" + reservation.ToTime + ",@Date=" + reservation.ReservationDate + ",@Uid="+reservation.UserId+ ",@Sid="+reservation.SID+ ",@Purpose='"+reservation.Purpose+"'");
+            var res = _context.Database.ExecuteSqlCommand("EXEC UpdBook @bid=" + reservation.BId + ",@Count=" + reservation.StudentCount + ",@Date='" + reservation.ReservationDate + "',@Uid="+reservation.UserId+ ",@Sid="+reservation.SID+ ",@Purpose='"+reservation.Purpose+ "',@Slot="+reservation.Slot+"");
 
             return Convert.ToBoolean(res);
         }
