@@ -52,7 +52,7 @@ namespace Booking.API.Repository
             int uid = reservation.UserId;
             int sid = reservation.SID;
             string purpose = reservation.Purpose;
-            var rest = _context.Database.ExecuteSqlCommand("EXEC InsBooking  @count =" + StudentCount + ", @ftime=" + FDate + ",@ttime=" + TDate + ",@rdate=" + rdate + ",@uid=" + uid + ",@sid="+ sid + ",@purpose='"+ purpose + "'");
+            var rest = _context.Database.ExecuteSqlCommand("EXEC InsBooking  @count =" + StudentCount + ", @ftime='" + FDate + "',@ttime='" + TDate + "',@rdate='" + rdate + "',@uid=" + uid + ",@sid="+ sid + ",@purpose='"+ purpose + "'");
 
         }
 

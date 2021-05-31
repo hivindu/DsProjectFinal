@@ -78,10 +78,10 @@ namespace Booking.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Book>> AddBooking(Book book)
+        public async Task<ActionResult<Book>> AddBooking([FromBody] Book book)
         {
             await _repository.Create(book);
-
+             
             return CreatedAtAction("GetBook", new { id = book.BId }, book);
         }
 

@@ -74,10 +74,35 @@ namespace StudyRoom.API.Controllers
             return Ok(bookings);
         }
 
+        [HttpGet("[action]/{fTime}/{tTime}/{date}/{id}")]
+        [ProducesResponseType(typeof(IEnumerable<Rooms>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Rooms>>> GetExist(DateTime fTime, DateTime tTime, DateTime date,int id)
+        {
+            var bookings = await _repository.GetExist(fTime, tTime, date,id);
 
-        // POST: api/Rooms
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+            if (bookings == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(bookings);
+        }
+
+        [HttpGet("[action]/{id}")]
+        [ProducesResponseType(typeof(IEnumerable<Rooms>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Rooms>>> GetRoomByBooking(int id)
+        {
+            var bookings = await _repository.GetRoomByBooking(id);
+
+            if (bookings == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(bookings);
+        }
+
+
         [HttpPost]
         public async Task<ActionResult<Rooms>> CreateRoom([FromBody]Rooms rooms)
         {
@@ -86,9 +111,7 @@ namespace StudyRoom.API.Controllers
             return CreatedAtAction("GetRooms", new { id = rooms.SId }, rooms);
         }
 
-        // PUT: api/Rooms/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+      
         [HttpPut]
         [ProducesResponseType(typeof(Rooms), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> UpdateRoom([FromBody] Rooms rooms)
