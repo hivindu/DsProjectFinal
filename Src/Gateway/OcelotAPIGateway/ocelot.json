@@ -38,7 +38,7 @@
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/Rooms/GetBookingsByTime/{fTime}/{tTime}/{date}",
+      "DownstreamPathTemplate": "/api/v1/Rooms/GetBookingsByTime/{slot}/{date}",
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -46,7 +46,7 @@
           "Port": "80"
         }
       ],
-      "UpstreamPathTemplate": "/Rooms/GetBookingsByTime/{fTime}/{tTime}/{date}",
+      "UpstreamPathTemplate": "/Rooms/GetBookingsByTime/{slot}/{date}",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
@@ -62,7 +62,7 @@
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/Rooms/GetExist/{fTime}/{tTime}/{date}/{id}",
+      "DownstreamPathTemplate": "/api/v1/Rooms/GetExist/{slot}/{date}/{id}",
       "DownstreamPathScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -70,7 +70,7 @@
           "Port": "80"
         }
       ],
-      "UpstreamPathTemplate": "/Rooms/GetExist/{fTime}/{tTime}/{date}/{id}",
+      "UpstreamPathTemplate": "/Rooms/GetExist/{slot}/{date}/{id}",
       "UpstreamHttpMethod": [ "GET" ]
     },
     // NUser API

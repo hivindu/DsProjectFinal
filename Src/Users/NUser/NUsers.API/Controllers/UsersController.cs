@@ -65,15 +65,10 @@ namespace NUsers.API.Controllers
         // PUT: api/User/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
+        [HttpPut]
         [ProducesResponseType(typeof(UserData), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateUser(int id, UserData users)
+        public async Task<IActionResult> UpdateUser([FromBody] UserData users)
         {
-            if (id != users.UId)
-            {
-                return BadRequest();
-            }
-
             return Ok(await _repository.Update(users));
         }
 

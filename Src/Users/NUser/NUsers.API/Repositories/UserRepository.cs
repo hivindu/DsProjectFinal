@@ -82,7 +82,7 @@ namespace NUsers.API.Repositories
         {
             string query = "EXEC DelUser @Uid=" + id + "";
 
-            var res = _context.Database.ExecuteSqlCommand("EXEC DelUser @Uid='" + id + "'");
+            var res = _context.Database.ExecuteSqlCommand("EXEC DelUser @id='" + id + "'");
 
             return Convert.ToBoolean(res);
         }

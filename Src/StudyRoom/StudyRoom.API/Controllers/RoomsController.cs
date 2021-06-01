@@ -60,11 +60,11 @@ namespace StudyRoom.API.Controllers
         }
 
 
-        [HttpGet("[action]/{fTime}/{tTime}/{date}")]
+        [HttpGet("[action]/{slot}/{date}")]
         [ProducesResponseType(typeof(IEnumerable<Rooms>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Rooms>>> GetBookingsByTime(DateTime fTime, DateTime tTime, DateTime date)
+        public async Task<ActionResult<IEnumerable<Rooms>>> GetBookingsByTime(int slot, string date)
         {
-            var bookings = await _repository.GetBookingByTime(fTime, tTime, date);
+            var bookings = await _repository.GetBookingByTime(slot, date);
 
             if (bookings == null)
             {
@@ -74,11 +74,11 @@ namespace StudyRoom.API.Controllers
             return Ok(bookings);
         }
 
-        [HttpGet("[action]/{fTime}/{tTime}/{date}/{id}")]
+        [HttpGet("[action]/{slot}/{date}/{id}")]
         [ProducesResponseType(typeof(IEnumerable<Rooms>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Rooms>>> GetExist(DateTime fTime, DateTime tTime, DateTime date,int id)
+        public async Task<ActionResult<IEnumerable<Rooms>>> GetExist(int slot, string date,int id)
         {
-            var bookings = await _repository.GetExist(fTime, tTime, date,id);
+            var bookings = await _repository.GetExist(slot, date,id);
 
             if (bookings == null)
             {

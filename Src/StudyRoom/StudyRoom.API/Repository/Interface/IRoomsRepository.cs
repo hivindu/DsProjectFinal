@@ -14,9 +14,9 @@ namespace StudyRoom.API.Repository.Interface
 
         Task<IEnumerable<Rooms>> GetRoomByOption(int option);
 
-        Task<IEnumerable<Rooms>> GetBookingByTime(DateTime ftime, DateTime toTime, DateTime date);
+        Task<IEnumerable<Rooms>> GetBookingByTime(int slot, string date);
 
-        Task<IEnumerable<Rooms>> GetExist(DateTime ftime, DateTime toTime, DateTime date, int id);
+        Task<IEnumerable<Rooms>> GetExist(int slot, string date, int id);
 
         Task<IEnumerable<Rooms>> GetRoomByBooking(int Id);
 

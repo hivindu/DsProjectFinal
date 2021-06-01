@@ -39,9 +39,9 @@ namespace StudyRoom.API.Repository
         }
 
 
-        public async Task<IEnumerable<Rooms>> GetBookingByTime(DateTime ftime, DateTime toTime, DateTime date)
+        public async Task<IEnumerable<Rooms>> GetBookingByTime(int slot, string date)
         {
-            string query = "EXEC SelAllBookingsByTime @fTime='" + ftime + "', @tTime='" + toTime + "',@rdate ='" + date + "'";
+            string query = "EXEC SelAllBookingsByTime @slot="+slot+",@rdate ='" + date + "'";
             return await _context.Rooms.FromSqlRaw(query).ToListAsync();
         }
 
@@ -52,9 +52,9 @@ namespace StudyRoom.API.Repository
             return await _context.Rooms.FromSqlRaw(query).ToListAsync();
         }
 
-        public async Task<IEnumerable<Rooms>> GetExist(DateTime ftime, DateTime toTime, DateTime date, int id)
+        public async Task<IEnumerable<Rooms>> GetExist(int slot, string date, int id)
         {
-            string query = "EXEC AvailabilityCheck @fTime='" + ftime + "', @tTime='" + toTime + "',@rdate ='" + date + "',@id='"+id+"'";
+            string query = "EXEC AvailabilityCheck @slot="+slot+",@rdate ='" + date + "',@id="+id+"";
             return await _context.Rooms.FromSqlRaw(query).ToListAsync();
         }
 
